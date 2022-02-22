@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">RxGo</string>
+    <string name="tab_text_1">Patient Profile</string>
+    <string name="tab_text_2">Prescriptions</string>
+    <string name="tab_text_3">Medical Info</string>
+    <string name="tab_text_4">Questions</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Prescription">Check Your prescription status</string>
+    <string name="Info">Search Up Conditions to learn more about your medical health</string>
+    <string name="Profile">User Profile</string>
+    <string name="Questions">Let Your primary care provider know if you have any questions comments or concerns</string>
+
+</resources>
