@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RxGo</string>
+
+
+    <string name="tab_text_1">Patient Profile</string>
+    <string name="tab_text_2">Prescriptions</string>
+    <string name="tab_text_3">Medical Info</string>
+    <string name="tab_text_4">Questions</string>
+
+</resources>
