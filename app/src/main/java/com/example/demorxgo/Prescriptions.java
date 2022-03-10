@@ -60,7 +60,6 @@ public class Prescriptions extends Fragment {
                         Log.d(TAG, ptHis.toString());
                     }
 
-
                     //recycler view here so that full prescription list is pass to recycler
                     rv=binding.recyclerView;
                     ma=new adapter(ptHis);

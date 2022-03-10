@@ -1,15 +1,13 @@
 package com.example.demorxgo;
 
-public class prescription {
+public class prescription{
 
     private String id;
     private String drug;
     private String strength;
 
     public prescription(String id, String drug, String strength) {
-        this.id = id;
-        this.drug = drug;
-        this.strength = strength;
+        builder ( id,drug,strength );
     }
 
     public String getId() {
@@ -44,4 +42,11 @@ public class prescription {
                 ", strength='" + strength + '\'' +
                 '}';
     }
+
+    public void builder(String id,String name, String strth){
+        this.id = id;
+        this.drug = name;
+        this.strength = strth;
+    }
+
 }
