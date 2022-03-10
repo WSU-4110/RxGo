@@ -1,6 +1,6 @@
 package com.example.demorxgo;
 
-public class prescription{
+public class prescription extends build {
 
     private String id;
     private String drug;
@@ -43,7 +43,7 @@ public class prescription{
                 '}';
     }
 
-    public void builder(String id,String name, String strth){
+    void builder(String id,String name, String strth){
         this.id = id;
         this.drug = name;
         this.strength = strth;
