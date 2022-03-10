@@ -1,3 +1,5 @@
+package com.example.demorxgo;
+
 public class SearchInfo {
     private static SearchInfo Medical;
     private SearchInfo()
