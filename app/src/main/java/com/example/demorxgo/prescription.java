@@ -1,15 +1,13 @@
 package com.example.demorxgo;
 
+import android.app.AlertDialog;
+
 public class prescription {
 
-    private String id;
-    private String drug;
-    private String strength;
-    private String refills;
-    private String dr;
-    private String dPhone;
-    private String date;
-    private String sig;
+    private String id; private String drug;
+    private String strength; private String refills;
+    private String dr; private String dPhone;
+    private String date; private String sig;
 
     public prescription(String id, String drug, String strength, String refills, String dr, String dPhone, String date, String sig) {
         this.id = id;
@@ -52,6 +50,20 @@ public class prescription {
 
     public void setRefills(String refills) {
         this.refills = refills;
+    }
+
+    public void decrementRefill()
+    {
+        int refillN =Integer.parseInt (refills);
+        if(refillN>0){
+            refillN--;
+            refills=String.valueOf ( refillN );
+        }
+        else
+        {
+            System.out.println ("request refill");
+        }
+
     }
 
     public String getDate() {

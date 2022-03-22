@@ -54,7 +54,7 @@ public class adapter extends RecyclerView.Adapter<adapter.MyViewHolder> {
                 Log.d(TAG,d.getDrug ());
                 AlertDialog.Builder builder = new AlertDialog.Builder ( v.getContext () );
                 builder.setTitle(d.getDrug ());
-                builder.setMessage("Rx#: "+d.getId ()+"\n\n"+d.getDrug ()+ " "+d.getStrength ()+"\n"+"Sig:\n"+d.getSig ()+"\n\n"+"Refills: "+d.getRefills ()+"\n\n"+"Dr: "+d.getDr ()+"\nPhone: "+d.getdPhone ());
+                builder.setMessage("Rx#: "+d.getId ()+"\n\n"+d.getDrug ()+ " "+d.getStrength ()+"\n"+"Sig:\n"+d.getSig ()+"\nWritten: "+d.getDate ()+"\n\n"+"Refills: "+d.getRefills ()+"\n\n"+"Dr: "+d.getDr ()+"\nPhone: "+d.getdPhone ());
                 builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -62,6 +62,14 @@ public class adapter extends RecyclerView.Adapter<adapter.MyViewHolder> {
                     }
                 });
 
+                builder.setPositiveButton ( "-1 Refill", new DialogInterface.OnClickListener () {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        d.decrementRefill ();
+                        notifyDataSetChanged ();
+                        //*********** Also update firebase data here (only updating array of prescriptions rn) ***********
+                    }
+                } );
                 builder.show();
             }
         } );
