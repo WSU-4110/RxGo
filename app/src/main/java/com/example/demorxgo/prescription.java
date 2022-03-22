@@ -6,12 +6,20 @@ public class prescription {
     private String drug;
     private String strength;
     private String refills;
+    private String dr;
+    private String dPhone;
+    private String date;
+    private String sig;
 
-    public prescription(String id, String drug, String strength,String refills) {
+    public prescription(String id, String drug, String strength, String refills, String dr, String dPhone, String date, String sig) {
         this.id = id;
         this.drug = drug;
         this.strength = strength;
         this.refills = refills;
+        this.dr=dr;
+        this.dPhone=dPhone;
+        this.date=date;
+        this.sig = sig;
     }
 
     public String getId() {
@@ -46,6 +54,31 @@ public class prescription {
         this.refills = refills;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+
+    public String getDr() {
+        return dr;
+    }
+
+    public void setDr(String dr) {
+        this.dr = dr;
+    }
+
+    public String getdPhone() {
+        return dPhone;
+    }
+
+    public void setdPhone(String dPhone) {
+        this.dPhone = dPhone;
+    }
+
     @Override
     public String toString() {
         return "prescription{" +
@@ -53,5 +86,13 @@ public class prescription {
                 ", drug='" + drug + '\'' +
                 ", strength='" + strength + '\'' +
                 '}';
+    }
+
+    public String getSig() {
+        return sig;
+    }
+
+    public void setSig(String sig) {
+        this.sig = sig;
     }
 }

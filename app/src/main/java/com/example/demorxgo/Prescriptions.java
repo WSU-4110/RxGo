@@ -1,7 +1,6 @@
 package com.example.demorxgo;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
-import android.content.ContentValues;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,8 +25,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Random;
 
 public class Prescriptions extends Fragment {
     FirebaseFirestore fStore;
@@ -62,7 +58,7 @@ public class Prescriptions extends Fragment {
                 if(task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         //creating drug list array
-                        ptHis.add(new prescription(document.getId().toString(), document.get("Drug").toString(), document.get("Drug Strength").toString(),document.get("Refills").toString ()));
+                        ptHis.add(new prescription(document.getId().toString(), document.get("Drug").toString(), document.get("Drug Strength").toString(),document.get("Refills").toString (), document.get("Dr").toString (),document.get("dPhone").toString(),document.get("Date").toString (), document.get( "Sig" ).toString()));
                         Log.d(TAG, ptHis.toString());
                     }
 

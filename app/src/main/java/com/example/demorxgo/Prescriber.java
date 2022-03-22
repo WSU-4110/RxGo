@@ -13,13 +13,10 @@ public class Prescriber extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prescriber);
-
-
-
     }
+
     public void backMain(View view){
         startActivity(new Intent(getApplicationContext(),MainActivity.class));
         finish();
     }
-
 }
