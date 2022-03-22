@@ -22,5 +22,4 @@ public class Prescriber extends AppCompatActivity {
         finish();
     }
 
-
 }
