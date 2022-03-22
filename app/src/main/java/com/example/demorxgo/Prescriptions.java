@@ -1,6 +1,7 @@
 package com.example.demorxgo;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.content.ContentValues;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -33,8 +34,8 @@ public class Prescriptions extends Fragment {
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
     String userID;
-    private RecyclerView rv;
-    private adapter ma;
+    RecyclerView rv;
+    adapter ma;
     private ArrayList<prescription> ptHis = new ArrayList<prescription>();
     private FragmentPrescriptionsBinding binding;
     public Prescriptions() {
@@ -44,6 +45,11 @@ public class Prescriptions extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding=FragmentPrescriptionsBinding.inflate ( getLayoutInflater () );
 
         fAuth = FirebaseAuth.getInstance();
@@ -56,31 +62,24 @@ public class Prescriptions extends Fragment {
                 if(task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         //creating drug list array
-                        ptHis.add(new prescription(document.getId().toString(), document.get("Drug").toString(), document.get("Drug Strength").toString()));
+                        ptHis.add(new prescription(document.getId().toString(), document.get("Drug").toString(), document.get("Drug Strength").toString(),document.get("Refills").toString ()));
                         Log.d(TAG, ptHis.toString());
                     }
 
-                    //recycler view here so that full prescription list is pass to recycler
-                    rv=binding.recyclerView;
+                    //recycler view here so that full prescription list is passed to recycler
+                    rv=(RecyclerView)getView ().findViewById(R.id.recyclerView);
                     ma=new adapter(ptHis);
-                    Log.d(TAG,"setting adapter");
-                    rv.setAdapter(ma);
-                    Log.d(TAG,"adapter set");
-                    LinearLayoutManager llm = new LinearLayoutManager(getContext ());
-                    llm.setOrientation(LinearLayoutManager.VERTICAL);
-                    rv.setLayoutManager(llm);
-                    rv.setItemAnimator(new DefaultItemAnimator ());
-                    rv.addItemDecoration(new DividerItemDecoration (getContext (),LinearLayoutManager.VERTICAL));
-
+                    rv.setAdapter ( ma );
+                    rv.setLayoutManager(new LinearLayoutManager(getContext()));
+                    rv.setItemAnimator(new DefaultItemAnimator());
+                    rv.addItemDecoration(new DividerItemDecoration(getContext (),LinearLayoutManager.VERTICAL));
                 }
+
             }
         });
 
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_prescriptions, container, false);
     }
+
 }

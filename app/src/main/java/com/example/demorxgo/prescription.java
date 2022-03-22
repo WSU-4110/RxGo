@@ -1,13 +1,17 @@
 package com.example.demorxgo;
 
-public class prescription extends build {
+public class prescription {
 
     private String id;
     private String drug;
     private String strength;
+    private String refills;
 
-    public prescription(String id, String drug, String strength) {
-        builder ( id,drug,strength );
+    public prescription(String id, String drug, String strength,String refills) {
+        this.id = id;
+        this.drug = drug;
+        this.strength = strength;
+        this.refills = refills;
     }
 
     public String getId() {
@@ -34,6 +38,14 @@ public class prescription extends build {
         this.strength = strength;
     }
 
+    public String getRefills() {
+        return refills;
+    }
+
+    public void setRefills(String refills) {
+        this.refills = refills;
+    }
+
     @Override
     public String toString() {
         return "prescription{" +
@@ -42,11 +54,4 @@ public class prescription extends build {
                 ", strength='" + strength + '\'' +
                 '}';
     }
-
-    void builder(String id,String name, String strth){
-        this.id = id;
-        this.drug = name;
-        this.strength = strth;
-    }
-
 }

@@ -66,7 +66,6 @@ public class Patient extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(Patient.this, "Successfully Logged In", Toast.LENGTH_LONG).show();
-//                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
                             Intent intent = new Intent(Patient.this, PatientHome.class);
                             startActivity(intent);
 
