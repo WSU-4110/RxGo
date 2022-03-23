@@ -25,29 +25,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class PatientHome extends AppCompatActivity{
-    TextView firstN,lastN;
-    FirebaseAuth fAuth;
-    FirebaseFirestore fStore;
-    String userID;
-    TabLayout tabLayout;
-
-
-
-
 
     private ActivityPatientHomeBinding binding;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-
         super.onCreate(savedInstanceState);
         binding = ActivityPatientHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(),this);
         ViewPager viewPager;
@@ -56,43 +41,6 @@ public class PatientHome extends AppCompatActivity{
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager ( viewPager );
 
-
-
-        firstN = findViewById(R.id.fName);
-        lastN = findViewById(R.id.lName);
-        fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
-        userID = fAuth.getCurrentUser().getUid();
-
-
-
-
-
-/*AH's code
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
-        ViewPager viewPager = binding.viewPager;
-        viewPager.setAdapter(sectionsPagerAdapter);
-        TabLayout tabs = binding.tabs;
-        tabs.setupWithViewPager(viewPager);
-
-
-
-
-
-        //retrieve patient data from fStore
-        DocumentReference df = fStore.collection("patients").document(userID);
-        df.addSnapshotListener(this, new EventListener<DocumentSnapshot>(){
-                @Override
-                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e){
-                    firstN.setText(documentSnapshot.getString("First Name"));
-                    lastN.setText(documentSnapshot.getString("Last Name"));
-                }
-        });
-
- */
-
-
     }
-
 
 }

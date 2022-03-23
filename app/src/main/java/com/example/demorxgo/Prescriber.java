@@ -88,9 +88,9 @@ public class Prescriber extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(),PrescriberRegister.class));
         finish();
     }
+
     public void backMain(View view){
         startActivity(new Intent(getApplicationContext(),MainActivity.class));
         finish();
     }
-
 }
