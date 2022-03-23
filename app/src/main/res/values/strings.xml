@@ -7,5 +7,19 @@
     <string name="tab_text_2">Prescriptions</string>
     <string name="tab_text_3">Medical Info</string>
     <string name="tab_text_4">Questions</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="new_click_here_to_register">New? Click here to Register</string>
+    <string name="refill_requests">Refill Requests</string>
+    <string name="patients">Patients</string>
+    <string name="phone_xxx_xxx_xxxx">Phone#: XXX-XXX-XXXX</string>
+    <string name="home">Home</string>
+    <string name="password2">password</string>
+    <string name="npi_xxxxxxxxxx">NPI XXXXXXXXXX</string>
+    <string name="already_registered_back_to_login_screen">Already Registered? Back to login Screen</string>
+    <string name="register">Register</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
 
 </resources>

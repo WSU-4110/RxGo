@@ -19,6 +19,12 @@
             android:name=".Register"
             android:exported="false" />
         <activity
+            android:name=".PrescriberRegister"
+            android:exported="false" />
+        <activity
+            android:name=".PrescriberHome"
+            android:exported="false"/>
+        <activity
             android:name=".Patient"
             android:exported="false" />
         <activity
