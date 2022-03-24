@@ -6,7 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id = "@+id/listview"/>
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -45,6 +48,5 @@
         android:text="Prescriber"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

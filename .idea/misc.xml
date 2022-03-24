@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/12486/Downloads/RxGo11/app/src/main/res/layout/activity_main.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/12486/Downloads/RxGo11/app/src/main/res/layout/activity_prescriber.xml" value="0.23854166666666668" />
+        <entry key="..\:/Users/12486/Downloads/RxGo11/app/src/main/res/layout/activity_register.xml" value="0.2109375" />
+        <entry key="..\:/Users/12486/Downloads/RxGo11/app/src/main/res/layout/fragment_contactd.xml" value="0.2109375" />
+        <entry key="..\:/Users/12486/Downloads/RxGo11/app/src/main/res/layout/fragment_info.xml" value="0.18518518518518517" />
+        <entry key="..\:/Users/12486/Downloads/RxGo11/app/src/main/res/layout/fragment_patient_home.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/12486/Downloads/RxGo11/app/src/main/res/layout/fragment_prescriptions.xml" value="0.23854166666666668" />
+        <entry key="..\:/Users/12486/Downloads/RxGo11/app/src/main/res/layout/list_item.xml" value="0.23854166666666668" />
+        <entry key="..\:/Users/12486/Downloads/RxGo11/app/src/main/res/layout/search_fragment.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/12486/Downloads/RxGo11/app/src/main/res/menu/menu.xml" value="0.2" />
         <entry key="..\:/Users/nguye/AndroidStudioProjects/DemoRxGo/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/nguye/AndroidStudioProjects/DemoRxGo/app/src/main/res/layout/activity_patient.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/nguye/AndroidStudioProjects/DemoRxGo/app/src/main/res/layout/activity_patient_home.xml" value="0.25905797101449274" />
@@ -20,6 +30,18 @@
         <entry key="..\:/Users/nguye/AndroidStudioProjects/DemoRxGo2/RxGo-master/app/src/main/res/layout/fragment_patient_home.xml" value="0.3265625" />
         <entry key="..\:/Users/nguye/AndroidStudioProjects/DemoRxGo2/RxGo-master/app/src/main/res/layout/fragment_prescriptions.xml" value="0.22" />
         <entry key="..\:/Users/nguye/AndroidStudioProjects/DemoRxGo2/RxGo-master/app/src/main/res/layout/list_item.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/WSURG/rxGO/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/WSURG/rxGO/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/WSURG/rxGO/app/src/main/res/layout/activity_main.xml" value="0.15881458966565348" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/WSURG/rxGO/app/src/main/res/layout/activity_patient.xml" value="0.15881458966565348" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/WSURG/rxGO/app/src/main/res/layout/activity_patient_home.xml" value="0.15881458966565348" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/WSURG/rxGO/app/src/main/res/layout/activity_prescriber.xml" value="0.3265625" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/WSURG/rxGO/app/src/main/res/layout/activity_register.xml" value="0.3265625" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/WSURG/rxGO/app/src/main/res/layout/fragment_contactd.xml" value="0.3265625" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/WSURG/rxGO/app/src/main/res/layout/fragment_info.xml" value="0.3265625" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/WSURG/rxGO/app/src/main/res/layout/fragment_patient_home.xml" value="0.22" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/WSURG/rxGO/app/src/main/res/layout/fragment_prescriptions.xml" value="0.25" />
+        <entry key="..\:/Users/nguye/AndroidStudioProjects/WSURG/rxGO/app/src/main/res/layout/list_item.xml" value="0.1" />
       </map>
     </option>
   </component>
