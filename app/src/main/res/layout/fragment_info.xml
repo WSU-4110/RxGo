@@ -6,13 +6,16 @@
     android:layout_height="match_parent">
 
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="for looking up medical information"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <EditText
+        android:id="@+id/input7"
+        android:layout_width="240dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="256dp"
+        android:layout_marginEnd="84dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Search up information on a drug"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
