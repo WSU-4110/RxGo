@@ -2,8 +2,149 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/edit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PrescribingPage">
+
+
+    <EditText
+        android:id="@+id/lNameP"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="125dp"
+        android:ems="10"
+        android:hint="Last"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="25dp"
+        android:ems="10"
+        android:hint="Date"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/DrugP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="Drug"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lNameP" />
+
+    <EditText
+        android:id="@+id/QuantityP"
+        android:layout_width="74dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="Q#/mL"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/StrengthP"
+        app:layout_constraintTop_toBottomOf="@+id/lNameP" />
+
+    <EditText
+        android:id="@+id/SigP"
+        android:layout_width="375dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="Sig"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DrugP" />
+
+    <EditText
+        android:id="@+id/RefillsP"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="75dp"
+        android:ems="10"
+        android:hint="R#"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SigP" />
+
+    <EditText
+        android:id="@+id/StrengthP"
+        android:layout_width="58dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="mg"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/DrugP"
+        app:layout_constraintTop_toBottomOf="@+id/lNameP" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="87dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Refills:"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toStartOf="@+id/RefillsP"
+        app:layout_constraintTop_toBottomOf="@+id/SigP" />
+
+    <Button
+        android:id="@+id/sendScriptBtn"
+        android:layout_width="115dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:text="Send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <EditText
+        android:id="@+id/BirthdayP"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="125dp"
+        android:ems="10"
+        android:hint="Bday MM-DD-YYYY"
+        android:inputType="date"
+        app:layout_constraintStart_toEndOf="@+id/lNameP"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/fNameP"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="125dp"
+        android:layout_marginEnd="5dp"
+        android:ems="10"
+        android:hint="First Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/lNameP"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButtonb"
+        android:layout_width="43dp"
+        android:layout_height="48dp"
+        android:onClick="backPMain"
+        android:contentDescription="@string/tab_text_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_media_previous"
+        tools:ignore="ImageContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

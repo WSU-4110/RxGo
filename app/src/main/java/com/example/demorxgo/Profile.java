@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
-import com.example.demorxgo.databinding.ActivityPatientHomeBinding;
+
 import com.example.demorxgo.databinding.FragmentPatientHomeBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
