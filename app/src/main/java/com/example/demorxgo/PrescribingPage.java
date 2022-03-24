@@ -157,6 +157,11 @@ public class PrescribingPage extends AppCompatActivity {
             }
         } );
 
-
     }
+
+    public void backPMain(View view){
+        startActivity(new Intent(getApplicationContext(),PrescriberHome.class));
+        finish();
+    }
+
 }

@@ -135,4 +135,16 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toStartOf="@+id/lNameP"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButtonb"
+        android:layout_width="43dp"
+        android:layout_height="48dp"
+        android:onClick="backPMain"
+        android:contentDescription="@string/tab_text_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_media_previous"
+        tools:ignore="ImageContrastCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
