@@ -1,56 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".PrescriberHome">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+
+    <Button
+        android:id="@+id/patientBtn"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        android:layout_marginTop="100dp"
+        android:text="Patients"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:layout_height="?attr/actionBarSize"
-            android:layout_width="match_parent"
-            app:layout_scrollFlags="scroll|enterAlways"></androidx.appcompat.widget.Toolbar>
+    <Button
+        android:id="@+id/prescribeBtn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Prescribe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patientBtn" />
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            app:tabMode="scrollable">
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/patients" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/refill_requests" />
-        </com.google.android.material.tabs.TabLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
-        android:layout_width="match_parent"
-
-        android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </androidx.core.widget.NestedScrollView>
-
-    <SearchView
-        android:layout_width="match_parent"
-        android:layout_height="190dp"
-        app:layout_anchor="@+id/nestedScrollView"
-        app:layout_anchorGravity="center" />
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <Button
+        android:id="@+id/messagesBtn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Messaging"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prescribeBtn" />
+</androidx.constraintlayout.widget.ConstraintLayout>

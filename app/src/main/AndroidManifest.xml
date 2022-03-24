@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoRxGo">
         <activity
+            android:name=".Messaging"
+            android:exported="false" />
+        <activity
+            android:name=".PatientList"
+            android:exported="false" />
+        <activity
+            android:name=".PrescribingPage"
+            android:exported="false" />
+        <activity
             android:name=".PatientHome"
             android:exported="false" />
         <activity
@@ -23,7 +32,7 @@
             android:exported="false" />
         <activity
             android:name=".PrescriberHome"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".Patient"
             android:exported="false" />

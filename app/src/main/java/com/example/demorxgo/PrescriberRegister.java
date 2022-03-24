@@ -102,6 +102,8 @@ public class PrescriberRegister extends AppCompatActivity {
                             user.put("Last Name",lName);
                             user.put("NPI",Npi);
                             user.put("Phone Number",phoneNum);
+                            user.put("Email",email);
+                            user.put("ID",userID);
 
 
                             df.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
