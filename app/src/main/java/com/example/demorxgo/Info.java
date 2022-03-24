@@ -1,14 +1,11 @@
 package com.example.demorxgo;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-
 import com.example.demorxgo.databinding.FragmentInfoBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
