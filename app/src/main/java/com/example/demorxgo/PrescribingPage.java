@@ -139,21 +139,20 @@ public class PrescribingPage extends AppCompatActivity {
                             }
                         }
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder ( v.getContext () );
-                        builder.setTitle("Whoops!");
-                        builder.setMessage("Didnt find patient with that Name/Birthday");
-                        builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.cancel ();
-                            }
-                        });
-                        builder.show();
+
                     }
 
                 } );
-
-
+                AlertDialog.Builder builder = new AlertDialog.Builder ( v.getContext () );
+                builder.setTitle("Whoops!");
+                builder.setMessage("Didnt find patient with that Name/Birthday");
+                builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel ();
+                    }
+                });
+                builder.show();
 
             }
         } );

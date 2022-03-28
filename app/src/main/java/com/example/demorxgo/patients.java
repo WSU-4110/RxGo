@@ -53,4 +53,13 @@ public class patients {
                 ", name='" + firstName + '\'' +
                 '}';
     }
+
+    public boolean equals(patients x)
+    {
+        if(this.getId ()==x.getId ())
+        {
+            return true;
+        }
+        return false;
+    }
 }
