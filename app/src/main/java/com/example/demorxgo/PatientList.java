@@ -19,6 +19,7 @@ import android.widget.SearchView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -30,7 +31,12 @@ public class PatientList extends AppCompatActivity {
     SearchView searchMe;
     RecyclerView searchL, savedL;
     adapter2 pa;
+    adapter3 spa;
     ArrayList<patients> ptSearch =new ArrayList<patients>();
+    ArrayList<patients> ptSaved =new ArrayList<patients>();
+    FirebaseFirestore fStore = FirebaseFirestore.getInstance ();
+    FirebaseFirestore fStore2 = FirebaseFirestore.getInstance ();
+    FirebaseAuth fAuth = FirebaseAuth.getInstance ();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +48,7 @@ public class PatientList extends AppCompatActivity {
 
     private void fillPtList(ArrayList<patients>ptSearch)
     {
-        FirebaseFirestore fStore = FirebaseFirestore.getInstance ();
+
 
         //building array of all patients
         fStore.collection ( "patients" ).get().addOnCompleteListener ( new OnCompleteListener<QuerySnapshot> () {
@@ -66,11 +72,11 @@ public class PatientList extends AppCompatActivity {
                 searchL.setAdapter(pa);
 
                     //Search View setup
-                SearchView searchView = (SearchView) findViewById ( R.id.searchPt );
+                searchMe = (SearchView) findViewById ( R.id.searchPt );
 
-                searchView.setImeOptions( EditorInfo.IME_ACTION_DONE);
+                searchMe.setImeOptions( EditorInfo.IME_ACTION_DONE);
 
-                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                searchMe.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                     @Override
                     public boolean onQueryTextSubmit(String query) {
                         return false;
@@ -82,10 +88,31 @@ public class PatientList extends AppCompatActivity {
                         return false;
                     }
                 });
+                //---------------------------------------------/"
+                //setting up second Recycler view with only saved patients
                 //---------------------------------------------//
+
+                //---------------------------------------------//
+                //building array of saved patient IDs
+                fStore2.collection ( "prescriber" ).document (fAuth.getUid ()).collection ( "Patients" ).get().addOnCompleteListener ( new OnCompleteListener<QuerySnapshot> () {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful ())
+                        {
+                            for(QueryDocumentSnapshot document : task.getResult ()) {
+                                ptSaved.add ( new patients ( document.get ( "First Name" ).toString (), document.get ( "Last Name" ).toString (), document.get ( "BirthDay" ).toString (), document.getId () ) );
+                            }
+                        }
+
+                        savedL=findViewById(R.id.RecyclerSavedList);
+                        savedL.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                        spa = new adapter3(ptSaved);
+                        savedL.setItemAnimator(new DefaultItemAnimator ());
+                        savedL.addItemDecoration(new DividerItemDecoration (PatientList.this,LinearLayoutManager.VERTICAL));
+                        savedL.setAdapter ( spa );
+                    }
+                });
             }
-
-        } );
+        });
     }
-
 }
