@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.SearchView;
 
@@ -43,13 +45,12 @@ public class PatientList extends AppCompatActivity {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_patient_list );
 
+        //decided to do everything inside another function.. no reason i think
         fillPtList ( ptSearch );
     }
 
     private void fillPtList(ArrayList<patients>ptSearch)
     {
-
-
         //building array of all patients
         fStore.collection ( "patients" ).get().addOnCompleteListener ( new OnCompleteListener<QuerySnapshot> () {
             @Override
@@ -64,17 +65,17 @@ public class PatientList extends AppCompatActivity {
                 //recyclerview setup with Search View filter
                 //---------------------------------------------//
 
-                searchL = findViewById ( R.id.recyclerViewSearch );
-                searchL.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                pa = new adapter2 ( ptSearch );
-                searchL.setItemAnimator(new DefaultItemAnimator ());
-                searchL.addItemDecoration(new DividerItemDecoration (PatientList.this,LinearLayoutManager.VERTICAL));
-                searchL.setAdapter(pa);
+                searchL = findViewById ( R.id.recyclerViewSearch );//assign variable of recycler to patient search recycler
+                searchL.setLayoutManager(new LinearLayoutManager(getApplicationContext()));//syntax for vertical scrolling i think
+                pa = new adapter2 ( ptSearch );//pass through array of all patients into adapter
+                searchL.setItemAnimator(new DefaultItemAnimator ());//syntax for lines between items
+                searchL.addItemDecoration(new DividerItemDecoration (PatientList.this,LinearLayoutManager.VERTICAL));//syntax for vertical scrolling i think
+                searchL.setAdapter(pa);//set up adapter with recycler
 
                     //Search View setup
-                searchMe = (SearchView) findViewById ( R.id.searchPt );
+                searchMe = (SearchView) findViewById ( R.id.searchPt );//assign variable name
 
-                searchMe.setImeOptions( EditorInfo.IME_ACTION_DONE);
+                searchMe.setImeOptions( EditorInfo.IME_ACTION_DONE);//syntax no idea what this one does
 
                 searchMe.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                     @Override
@@ -84,7 +85,7 @@ public class PatientList extends AppCompatActivity {
 
                     @Override
                     public boolean onQueryTextChange(String newText) {
-                        pa.getFilter().filter(newText);
+                        pa.getFilter().filter(newText);//filtering adapter to show what is in search voew
                         return false;
                     }
                 });
@@ -104,7 +105,8 @@ public class PatientList extends AppCompatActivity {
                             }
                         }
 
-                        savedL=findViewById(R.id.RecyclerSavedList);
+                        //all the same stuff but passing through array of saved patients
+                        savedL=findViewById(R.id.RecyclerSavedList);//assign variable
                         savedL.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                         spa = new adapter3(ptSaved);
                         savedL.setItemAnimator(new DefaultItemAnimator ());
@@ -114,5 +116,11 @@ public class PatientList extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    //back button function to go back to home screen
+    public void backToPrescriberHome(View view){
+        startActivity(new Intent(getApplicationContext(),PrescriberHome.class));
+        finish();
     }
 }

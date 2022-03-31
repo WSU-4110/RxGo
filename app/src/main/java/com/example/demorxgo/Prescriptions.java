@@ -26,6 +26,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
+//class for prescription objects
 public class Prescriptions extends Fragment {
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;

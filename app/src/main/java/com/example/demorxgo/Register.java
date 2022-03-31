@@ -30,6 +30,7 @@ import java.util.Map;
 
 public class Register extends AppCompatActivity {
 
+    //variables
     EditText mFirstName,mLastName, mEmail, mPassword, mPhone, mBirthday;
     Button mRegisterBtn,mHomeBtn;
     TextView mLoginBtn;
@@ -43,6 +44,7 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        //set variables to views/database
         mFirstName = findViewById(R.id.firstName);
         mLastName = findViewById(R.id.lastName);
         mEmail = findViewById(R.id.rEmail);
@@ -57,16 +59,12 @@ public class Register extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar);
 
-        /*
-        if (fAuth.getCurrentUser() != null) {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            finish();
-        }*/
-
-
+        //click listener
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {//when clicked
+
+                //getting String info that is entered in text fields
                 String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
                 String fName = mFirstName.getText().toString().trim();
@@ -89,14 +87,18 @@ public class Register extends AppCompatActivity {
 
                 progressBar.setVisibility(View.VISIBLE);
 
-                //log patient log-in info to firebase authentication
+                //logging patient log-in info to firebase authentication
                 fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             //log patient profile data to fStore
-                            userID = fAuth.getCurrentUser().getUid();
-                            DocumentReference df = fStore.collection("patients").document(userID);//setting user Id from auth to match doc Id in store for new user
+                            userID = fAuth.getCurrentUser().getUid();//getting ID
+
+                            //creating document with name matching ID
+                            DocumentReference df = fStore.collection("patients").document(userID);
+
+                            //build document contents (Patient info)
                             Map<String,Object> user = new HashMap<>();
                             user.put("First Name",fName);
                             user.put("Last Name",lName);
@@ -105,7 +107,7 @@ public class Register extends AppCompatActivity {
                             user.put("Email",email);
                             user.put("ID",userID);
 
-
+                            //set contents to document
                             df.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
@@ -115,6 +117,7 @@ public class Register extends AppCompatActivity {
 
                             Toast.makeText(Register.this, "User Created.", Toast.LENGTH_SHORT).show();
 
+                            //go back to home page after registering
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                         } else {

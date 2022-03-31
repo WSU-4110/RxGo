@@ -1,5 +1,7 @@
 package com.example.demorxgo;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,14 +37,18 @@ public class adapter3 extends RecyclerView.Adapter<adapter3.MyViewHolder>{
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView first, last, Bday;
-        Button saveMe;
-
+        Button seeMe;
+        Context context;
+        Intent intent;
         public MyViewHolder(View itemView) {
             super ( itemView );
             first = itemView.findViewById ( R.id.firstNme );
             last = itemView.findViewById ( R.id.lastNme );
             Bday = itemView.findViewById ( R.id.birthDye );
-            saveMe = itemView.findViewById ( R.id.seePtBtn );
+            seeMe = itemView.findViewById ( R.id.seePtBtn );
+            context = itemView.getContext ();
+
+
         }
     }
 
@@ -62,11 +68,25 @@ public class adapter3 extends RecyclerView.Adapter<adapter3.MyViewHolder>{
         holder.Bday.setText ( p.getBirthday () );
         fStore=FirebaseFirestore.getInstance ();
         fAuth=FirebaseAuth.getInstance ();
+        holder.seeMe.setOnClickListener ( new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+
+                DocumentReference df = fStore.collection ( "prescriber" ).document (fAuth.getUid ());
+                Map<String,Object> lookAt = new HashMap<>();
+                lookAt.put("Viewing",p.getId ());
+                df.update (lookAt);
+
+                holder.context.startActivity(new Intent(holder.context,ViewPtProfile.class));
+            }
+        } );
     }
 
     @Override
     public int getItemCount() {
         return arrayList.size ();
     }
+
+
 }
 

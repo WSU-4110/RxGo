@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoRxGo">
         <activity
+            android:name=".ViewPtProfile"
+            android:exported="false" />
+        <activity
             android:name=".Messaging"
             android:exported="false" />
         <activity

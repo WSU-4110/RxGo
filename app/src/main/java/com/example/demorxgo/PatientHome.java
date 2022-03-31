@@ -31,6 +31,7 @@ public class PatientHome extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding = ActivityPatientHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
