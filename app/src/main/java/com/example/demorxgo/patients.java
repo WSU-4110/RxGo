@@ -1,5 +1,6 @@
 package com.example.demorxgo;
 
+//class for patient objects
 public class patients {
     private String firstName;
     private String lastName;

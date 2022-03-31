@@ -18,6 +18,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class PrescriberHome extends AppCompatActivity {
+
+    //variable declarations
     Button patientsB, prescribeB, messsagesB;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -29,6 +31,8 @@ public class PrescriberHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prescriber_home);
+
+        //assigning variable names to views/database variable names to database
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userID = fAuth.getCurrentUser().getUid();
@@ -37,6 +41,7 @@ public class PrescriberHome extends AppCompatActivity {
         messsagesB = findViewById ( R.id.messagesBtn );
 
 
+        //button listeners and starting new pages
         patientsB.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View v) {

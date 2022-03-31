@@ -30,6 +30,7 @@ import java.util.Map;
 
 public class PrescriberRegister extends AppCompatActivity {
 
+    //variable declarations
     EditText mFirstName,mLastName, mEmail, mPassword, mPhone, mNPI;
     Button mRegisterBtn,mHomeBtn;
     TextView mLoginBtn;
@@ -43,6 +44,7 @@ public class PrescriberRegister extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prescriber_register);
 
+        //assigning variables -- views
         mFirstName = findViewById(R.id.firstName3);
         mLastName = findViewById(R.id.lastName3);
         mEmail = findViewById(R.id.rEmail3);
@@ -68,6 +70,8 @@ public class PrescriberRegister extends AppCompatActivity {
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //getting Strings typed in fields
                 String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
                 String fName = mFirstName.getText().toString().trim();
@@ -75,7 +79,7 @@ public class PrescriberRegister extends AppCompatActivity {
                 String phoneNum = mPhone.getText().toString().trim();
                 String Npi = mNPI.getText().toString().trim();
 
-
+                //checking inputs
                 if (TextUtils.isEmpty(email)) {
                     mEmail.setError("Email is required.");
                     return;
@@ -90,14 +94,17 @@ public class PrescriberRegister extends AppCompatActivity {
 
                 progressBar.setVisibility(View.VISIBLE);
 
-                //log patient log-in info to firebase authentication
+                //logging patient log-in info to firebase authentication
                 fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+
                             //log prescriber profile data to fStore
-                            userID = fAuth.getCurrentUser().getUid();
-                            DocumentReference df = fStore.collection("prescriber").document(userID);//setting user Id from auth to match doc Id in store for new user
+                            userID = fAuth.getCurrentUser().getUid();//getting pt ID that was made
+                            DocumentReference df = fStore.collection("prescriber").document(userID);//creating document with a name matching patient ID
+
+                            //building document contents
                             Map<String,Object> user = new HashMap<>();
                             user.put("First Name",fName);
                             user.put("Last Name",lName);
@@ -106,7 +113,7 @@ public class PrescriberRegister extends AppCompatActivity {
                             user.put("Email",email);
                             user.put("ID",userID);
 
-
+                            //set document contents inside the document
                             df.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
@@ -116,9 +123,11 @@ public class PrescriberRegister extends AppCompatActivity {
 
                             Toast.makeText(PrescriberRegister.this, "User Created.", Toast.LENGTH_SHORT).show();
 
+                            //back to home after registering
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                         } else {
+                            //registering fail
                             Toast.makeText(PrescriberRegister.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                         }

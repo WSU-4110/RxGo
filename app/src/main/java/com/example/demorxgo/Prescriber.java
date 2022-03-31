@@ -17,9 +17,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-
+//Prescriber login screen
 public class Prescriber extends AppCompatActivity {
 
+    //variable declarations
     EditText mEmail,mPassword;
     Button mLoginBtn;
     ProgressBar progressBar;
@@ -30,19 +31,23 @@ public class Prescriber extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prescriber);
 
+        //assign variable names to views
         mEmail = findViewById(R.id.email2);
         mPassword = findViewById(R.id.password2);
         progressBar = findViewById(R.id.progressBar2);
         fAuth = FirebaseAuth.getInstance();
         mLoginBtn = findViewById(R.id.login2);
-        //Log.d(TAG, "error");
-        //login functions button
+
+        //login button click listener
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //getting Strings that have been typed into the email and password fields
                 String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
 
+                //checking for errors
                 if (TextUtils.isEmpty(email)) {
                     mEmail.setError("Email is Required.");
                     return;
@@ -60,17 +65,18 @@ public class Prescriber extends AppCompatActivity {
 
                 progressBar.setVisibility(View.VISIBLE);
 
-                // authenticate the user
+                // authenticating the user with database
                 fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            //loging in
                             Toast.makeText(Prescriber.this, "Successfully Logged In", Toast.LENGTH_LONG).show();
-//                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
                             Intent intent = new Intent(Prescriber.this, PrescriberHome.class);
                             startActivity(intent);
 
                         } else {
+                            //failed login
                             Toast.makeText(Prescriber.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                         }

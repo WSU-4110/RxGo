@@ -28,7 +28,6 @@ public class Info extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding=FragmentInfoBinding.inflate(getLayoutInflater());
-        UserInput = (EditText) getView().findViewById(R.id.input7);
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_info, container, false);

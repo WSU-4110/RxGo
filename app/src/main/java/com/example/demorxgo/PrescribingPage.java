@@ -32,7 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PrescribingPage extends AppCompatActivity {
-
+    //variables
     EditText firstNm , lastNm, birthday, date, drug, mg, quan, refills, dir;
     String DName, DPhone;
     Button send;
@@ -46,6 +46,7 @@ public class PrescribingPage extends AppCompatActivity {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_prescribing_page );
 
+        //assigning variables to views/database
         firstNm = findViewById ( R.id.fNameP );
         lastNm = findViewById ( R.id.lNameP );
         birthday = findViewById ( R.id.BirthdayP );
@@ -60,15 +61,16 @@ public class PrescribingPage extends AppCompatActivity {
         fStore2=FirebaseFirestore.getInstance ();
         fStore3=FirebaseFirestore.getInstance ();
 
-
+        //setting default date to today
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         Date curdate = new Date();
         date.setText ( formatter.format(curdate) );
 
+        //send button listener
         send.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View v) {
-
+                //getting String Rx info that is entered
                 String FName = firstNm.getText().toString().trim();
                 String LName = lastNm.getText().toString().trim();
                 String Bday = birthday.getText().toString().trim();
@@ -79,6 +81,7 @@ public class PrescribingPage extends AppCompatActivity {
                 String Refills = refills.getText().toString().trim();
                 String Sig = dir.getText().toString().trim();
 
+                //building a list of all patients to look through and find our patient
                 fStore.collection ( "patients" ).get().addOnCompleteListener ( new OnCompleteListener<QuerySnapshot> () {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -89,13 +92,16 @@ public class PrescribingPage extends AppCompatActivity {
                             }
                         }
 
+                        //looping through array of patients
                         for(int i = 0; i<patientsArrayList.size ();i++) {
                             Log.d ( TAG, patientsArrayList.get ( i ).getLastName () + " " + LName );
 
                             //if we find the patient*
                             if (patientsArrayList.get ( i ).getLastName ().toString ().equals ( LName )&&patientsArrayList.get ( i ).getFirstName ().toString ().equals ( FName )&&patientsArrayList.get ( i ).getBirthday ().toString ().equals ( Bday )) {
-                                int o = i;
-                                //getting Dr info
+
+                                int o = i; //variable for patient position in array
+
+                                //getting Dr info to add to Rx info
                                 fAuth = FirebaseAuth.getInstance ();
                                 DocumentReference df = fStore3.collection ( "prescriber" ).document ( fAuth.getUid () );
                                 df.get ().addOnCompleteListener ( new OnCompleteListener<DocumentSnapshot> () {
@@ -103,14 +109,17 @@ public class PrescribingPage extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                         DocumentSnapshot document = task.getResult ();
                                         if (document.exists ()) {
+
+                                            //geting String Dr info
                                             DName = document.get ( "Last Name" ).toString ();
                                             DPhone = document.get ( "Phone Number" ).toString ();
 
-
                                             //found patient so adding rx
                                             Log.d ( TAG, "found patient.. adding rx" );
-                                            //how do we know where to put this??
+
+                                            //creating document in patient's prescription collection
                                             DocumentReference df2 = fStore2.collection ( "patients" ).document ( patientsArrayList.get ( o ).getId ().toString () ).collection ( "Prescriptions" ).document ( (int) (Math.random () * 10000000) + "" );//setting user Id from auth to match doc Id in store for new user
+                                            //building contents
                                             Map<String, Object> user = new HashMap<> ();
                                             user.put ( "Date", Date );
                                             user.put ( "Dr", DName );
@@ -121,6 +130,7 @@ public class PrescribingPage extends AppCompatActivity {
                                             user.put ( "Sig", Sig );
                                             user.put ( "dPhone", DPhone );
 
+                                            //setting contents to created document
                                             df2.set ( user ).addOnCompleteListener ( new OnCompleteListener<Void> () {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
@@ -143,6 +153,8 @@ public class PrescribingPage extends AppCompatActivity {
                     }
 
                 } );
+
+                //alertdialog box if patient not found
                 AlertDialog.Builder builder = new AlertDialog.Builder ( v.getContext () );
                 builder.setTitle("Whoops!");
                 builder.setMessage("Didnt find patient with that Name/Birthday");
@@ -152,13 +164,13 @@ public class PrescribingPage extends AppCompatActivity {
                         dialogInterface.cancel ();
                     }
                 });
-                builder.show();
-
+                //missing build.show() not sure where i can put it to only show on patient find failures
             }
         } );
 
     }
 
+    //button function for back home
     public void backPMain(View view){
         startActivity(new Intent(getApplicationContext(),PrescriberHome.class));
         finish();

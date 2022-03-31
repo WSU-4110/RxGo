@@ -29,11 +29,14 @@ import java.util.ArrayList;
 
 public class Patient extends AppCompatActivity {
 
+    //declare all variables
     EditText mEmail,mPassword;
     Button mLoginBtn;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
+
     FirebaseFirestore fStore, fStore2;
+  
     ArrayList<String> patientsArrayList = new ArrayList<String> ();
 
     @Override
@@ -41,6 +44,7 @@ public class Patient extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient);
 
+        //assign variables to their views on layout file
         mEmail = findViewById(R.id.email);
         mPassword = findViewById(R.id.password);
         progressBar = findViewById(R.id.progressBar);
@@ -77,8 +81,8 @@ public class Patient extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
-                            //build patient list in array
+                        
+                            //build patient list with an array
                             fStore.collection ( "patients" ).get().addOnCompleteListener ( new OnCompleteListener<QuerySnapshot> () {
                                 @Override
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
