@@ -153,6 +153,7 @@ public class PrescribingPage extends AppCompatActivity {
                     }
 
                 } );
+
                 //alertdialog box if patient not found
                 AlertDialog.Builder builder = new AlertDialog.Builder ( v.getContext () );
                 builder.setTitle("Whoops!");
@@ -164,8 +165,6 @@ public class PrescribingPage extends AppCompatActivity {
                     }
                 });
                 //missing build.show() not sure where i can put it to only show on patient find failures
-
-
             }
         } );
 

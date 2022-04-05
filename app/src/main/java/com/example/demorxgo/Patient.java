@@ -34,7 +34,9 @@ public class Patient extends AppCompatActivity {
     Button mLoginBtn;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
-    FirebaseFirestore fStore;
+
+    FirebaseFirestore fStore, fStore2;
+  
     ArrayList<String> patientsArrayList = new ArrayList<String> ();
 
     @Override
@@ -79,7 +81,7 @@ public class Patient extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
+                        
                             //build patient list with an array
                             fStore.collection ( "patients" ).get().addOnCompleteListener ( new OnCompleteListener<QuerySnapshot> () {
                                 @Override
