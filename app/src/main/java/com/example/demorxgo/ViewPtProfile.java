@@ -30,7 +30,7 @@ public class ViewPtProfile extends AppCompatActivity {
 
     FirebaseAuth fAuth;
     FirebaseFirestore fStore,fStore2, fStore3;
-    TextView firstN, lastN;
+    TextView firstN, lastN,birthD;
     String PtID;
     RecyclerView ptRxList;
     adapter4 pha;
@@ -49,6 +49,7 @@ public class ViewPtProfile extends AppCompatActivity {
         firstN=findViewById ( R.id.ptFirst );
         lastN = findViewById ( R.id.ptLast );
         ptRxList = findViewById ( R.id.ptrxL );
+        birthD = findViewById ( R.id.ptBirth );
 
         DocumentReference df = fStore.collection ( "prescriber" ).document (fAuth.getUid ());
         df.get ().addOnCompleteListener ( new OnCompleteListener<DocumentSnapshot> () {
@@ -70,6 +71,7 @@ public class ViewPtProfile extends AppCompatActivity {
                         if (document.exists ()) {
                             firstN.setText ( document2.get ( "First Name" ).toString () );
                             lastN.setText ( document2.get ( "Last Name" ).toString () );
+                            birthD.setText ( document2.get("BirthDay").toString () );
                         }
                         Log.d(TAG,PtID);
                         fStore3.collection ( "patients" ).document ( PtID ).collection ( "Prescriptions" ).get ().addOnCompleteListener ( new OnCompleteListener<QuerySnapshot> () {

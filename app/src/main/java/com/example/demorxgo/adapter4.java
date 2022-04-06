@@ -3,7 +3,9 @@ package com.example.demorxgo;
 import static android.content.ContentValues.TAG;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,10 +29,12 @@ public class adapter4 extends RecyclerView.Adapter<adapter4.MyViewHolder>{
         //variables for text fields of drugs etc.
         TextView drug, strength, refill;
         Button addRBtn;
+        Context context;
 
         public MyViewHolder(View itemView){
             super(itemView);
 
+            context = itemView.getContext ();
             drug = itemView.findViewById(R.id.drugNameP);
             strength = itemView.findViewById(R.id.drugStrengthP);
             refill = itemView.findViewById(R.id.refillNP);
@@ -61,6 +65,24 @@ public class adapter4 extends RecyclerView.Adapter<adapter4.MyViewHolder>{
             @Override
             public void onClick(View v) {
                 //add refills
+                holder.context.startActivity(new Intent (holder.context,PrescribingPage.class));
+            }
+        } );
+
+        holder.drug.setOnClickListener ( new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder ( v.getContext () );
+                builder.setTitle(d.getDrug ());
+                builder.setMessage("Rx#: "+d.getId ()+"\n\n"+d.getDrug ()+ " "+d.getStrength ()+"\n"+"Sig:\n"+d.getSig ()+"\nWritten: "+d.getDate ()+"\n\n"+"Refills: "+d.getRefills ()+"\n\n"+"Dr: "+d.getDr ()+"\nPhone: "+d.getdPhone ());
+                //buttons on the dialog box
+                builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel ();
+                    }
+                });
+                builder.show ();
             }
         } );
 
