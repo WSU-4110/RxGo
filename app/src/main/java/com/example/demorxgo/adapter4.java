@@ -16,10 +16,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class adapter4 extends RecyclerView.Adapter<adapter4.MyViewHolder>{
     private ArrayList<prescription> arrayList = new ArrayList<>();
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
 
     public adapter4(ArrayList<prescription> arrayList) {
         this.arrayList = arrayList;
@@ -30,6 +38,7 @@ public class adapter4 extends RecyclerView.Adapter<adapter4.MyViewHolder>{
         TextView drug, strength, refill;
         Button addRBtn;
         Context context;
+
 
         public MyViewHolder(View itemView){
             super(itemView);
@@ -60,12 +69,20 @@ public class adapter4 extends RecyclerView.Adapter<adapter4.MyViewHolder>{
         holder.drug.setText(d.getDrug());
         holder.strength.setText(d.getStrength());
         holder.refill.setText(d.getRefills());
+        fStore = FirebaseFirestore.getInstance ();
+        fAuth = FirebaseAuth.getInstance ();
 
         holder.addRBtn.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View v) {
                 //add refills
-                holder.context.startActivity(new Intent (holder.context,PrescribingPage.class));
+
+                DocumentReference df = fStore.collection ( "prescriber" ).document (fAuth.getUid ());
+                Map<String,Object> refillN = new HashMap<> ();
+                refillN.put("Refilling",d.getId ());
+                df.update (refillN);
+
+                holder.context.startActivity(new Intent (holder.context,PrescribingRefill.class));
             }
         } );
 
