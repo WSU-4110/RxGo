@@ -8,7 +8,8 @@ public class patients {
     private String id;
 
 
-    public patients(String firstName, String lastName, String birthday, String id) {
+    public patients(String firstName, String lastName, String birthday, String id)
+    {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;
