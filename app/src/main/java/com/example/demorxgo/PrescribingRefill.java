@@ -90,7 +90,7 @@ public class PrescribingRefill extends AppCompatActivity {
                             lastNm.setText ( document2.get ( "Last Name" ).toString () );
                             birthday.setText ( document2.get ( "BirthDay" ).toString () );
                         }
-                        //auto fill rx info
+
                         DocumentReference df3 = fStore5.collection ( "patients" ).document ( pt ).collection ( "Prescriptions" ).document (refillN);
                         df3.get().addOnCompleteListener ( new OnCompleteListener<DocumentSnapshot> () {
                             @Override
@@ -196,7 +196,7 @@ public class PrescribingRefill extends AppCompatActivity {
                 //alertdialog box if patient not found
                 AlertDialog.Builder builder = new AlertDialog.Builder ( v.getContext () );
                 builder.setTitle("Whoops!");
-                builder.setMessage("Didn't find patient with that Name/Birthday");
+                builder.setMessage("Didnt find patient with that Name/Birthday");
                 builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

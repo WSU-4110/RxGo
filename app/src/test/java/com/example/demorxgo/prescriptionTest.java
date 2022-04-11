@@ -1,46 +1,47 @@
 package com.example.demorxgo;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-class prescriptionTest {
+import org.junit.Test;
 
-    @org.junit.jupiter.api.Test
-    void getId() {
+public class prescriptionTest {
+
+    @Test
+    public void getId() {
         prescription a = new prescription ("a","a","a","a","a","a","a","a");
         assertEquals ( "a",a.getId () );
     }
 
-    @org.junit.jupiter.api.Test
-    void setId() {
+    @Test
+    public void setId() {
         prescription a = new prescription ("a","a","a","a","a","a","a","a");
         a.setId("b");
         assertEquals ( "b",a.getId () );
-
     }
 
-    @org.junit.jupiter.api.Test
-    void getDrug() {
+    @Test
+    public void getDrug() {
         prescription a = new prescription ("a","a","a","a","a","a","a","a");
         assertEquals ( "a",a.getDrug () );
     }
 
-    @org.junit.jupiter.api.Test
-    void setDrug() {
+    @Test
+    public void setDrug() {
         prescription a = new prescription ("a","a","a","a","a","a","a","a");
         a.setDrug("b");
-        assertEquals ( "b",a.getDrug() );
+        assertEquals ( "b",a.getDrug () );
     }
 
-    @org.junit.jupiter.api.Test
-    void getRefills() {
+    @Test
+    public void getRefills() {
         prescription a = new prescription ("a","a","a","a","a","a","a","a");
         assertEquals ( "a",a.getRefills () );
     }
 
-    @org.junit.jupiter.api.Test
-    void setRefills() {
+    @Test
+    public void setRefills() {
         prescription a = new prescription ("a","a","a","a","a","a","a","a");
-        a.setRefills ("b");
+        a.setRefills("b");
         assertEquals ( "b",a.getRefills () );
     }
 }
