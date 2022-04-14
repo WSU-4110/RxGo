@@ -1,15 +1,17 @@
 package com.example.demorxgo;
 
 public class Drug {
+
     String CommonUses;
     String SideEffects;
     String Drug;
 
-    public Drug(String commonUses, String sideEffects, String drug) {
+    public Drug(String commonUses) {
         CommonUses = commonUses;
-        SideEffects = sideEffects;
-        Drug = drug;
+        SideEffects = SideEffects;
+        Drug = Drug;
     }
+
 
     public String getCommonUses() {
         return CommonUses;
