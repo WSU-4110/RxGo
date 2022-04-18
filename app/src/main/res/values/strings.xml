@@ -7,6 +7,8 @@
     <string name="tab_text_2">Prescriptions</string>
     <string name="tab_text_3">Medical Info</string>
     <string name="tab_text_4">Questions</string>
+    <string name="tab_text_5">Chat</string>
+    <string name="tab_text_6">Patients</string>
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
