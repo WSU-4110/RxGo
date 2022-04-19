@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,7 @@ public class Profile extends Fragment {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
+
     }//syntax
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -59,8 +61,10 @@ public class Profile extends Fragment {
                     setTextF ( (String) document.get ( "First Name" ) );
                     setTextL ( (String) document.get ( "Last Name" ) );
                 }
+                setButton ();
             }
         } );
+
 
         return inflater.inflate ( R.layout.fragment_patient_home, container, false );
     }
@@ -69,10 +73,25 @@ public class Profile extends Fragment {
     public void setTextF(String text) {
         TextView textView = (TextView) getView ().findViewById ( R.id.fName );
         textView.setText ( text );
+
     }
 
     public void setTextL(String text) {
         TextView textView = (TextView) getView ().findViewById ( R.id.lName );
         textView.setText ( text );
+
     }
+
+    public void setButton(){
+        Button test = (Button)getView ().findViewById ( R.id.Testing );
+        test.setOnClickListener ( new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG,"click!");
+            }
+        } );
+
+
+    }
+
 }

@@ -1,6 +1,9 @@
 package com.example.demorxgo;
 
 import android.content.Context;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -10,6 +13,8 @@ import androidx.fragment.app.FragmentManager;
 
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
+
+import com.example.demorxgo.databinding.FragmentPatientHomeBinding;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -22,6 +27,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public SectionsPagerAdapter(FragmentManager fm, Context context) {
         super ( fm );
         mContext = context;
+
+
     }
 
     @Override
@@ -44,6 +51,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment = new ContactD();
                 break;
         }
+
         return fragment;
 
 
@@ -61,4 +69,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // Show 2 total pages.
         return 4;
     }
+
+
 }
