@@ -77,7 +77,7 @@ public class ChatsFragment extends Fragment {
                     usersList.add(chatlist);
                 }
 
-                chatList();
+                //chatList();
             }
 
             @Override
@@ -109,30 +109,30 @@ public class ChatsFragment extends Fragment {
     //    reference.child(firebaseUser.getUid()).setValue(token1);
     //}
 
-    private void chatList() {
-        mUsers = new ArrayList<>();
-        reference = FirebaseDatabase.getInstance().getReference("patients");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                mUsers.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    User user = snapshot.getValue(User.class);
-                    for (Chatlist chatlist : usersList){
-                        if (user.getId().equals(chatlist.getId())){
-                            mUsers.add(user);
-                        }
-                    }
-                }
-                userAdapter = new UserAdapter(getContext(), mUsers);
-                recyclerView.setAdapter(userAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
+    //private void chatList() {
+    //    mUsers = new ArrayList<>();
+    //    reference = FirebaseDatabase.getInstance().getReference("patients");
+    //    reference.addValueEventListener(new ValueEventListener() {
+    //        @Override
+    //        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+    //            mUsers.clear();
+    //            for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+    //                User user = snapshot.getValue(User.class);
+    //                for (Chatlist chatlist : usersList){
+    //                    if (user.getId().equals(chatlist.getId())){
+    //                        mUsers.add(user);
+    //                    }
+    //                }
+    //            }
+    //            userAdapter = new UserAdapter(getContext(), mUsers);
+    //            recyclerView.setAdapter(userAdapter);
+    //        }
+//
+    //        @Override
+    //        public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+    //        }
+    //    });
+    //}
 
 }

@@ -23,10 +23,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.example.demorxgo.databinding.ActivityContactdBinding;
 import com.example.demorxgo.databinding.ActivityMessageBinding;
-import com.example.demorxgo.databinding.ActivityMessagingBinding;
-import com.example.demorxgo.databinding.ActivityPatientHomeBinding;
+import com.example.demorxgo.databinding.ActivityMessagehomeBinding;
 import com.google.android.material.tabs.TabLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -50,13 +48,13 @@ public class ChatMessage extends AppCompatActivity {
     FirebaseUser firebaseUser;
     DatabaseReference reference;
 
-    private ActivityContactdBinding binding;
+    private ActivityMessagehomeBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityContactdBinding.inflate(getLayoutInflater());
+        binding = ActivityMessagehomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), this);

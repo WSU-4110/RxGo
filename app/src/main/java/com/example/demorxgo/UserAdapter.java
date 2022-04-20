@@ -24,20 +24,21 @@ import com.example.demorxgo.Chat;
 import com.example.demorxgo.User;
 import com.example.demorxgo.R;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<User> mUsers;
+    private ArrayList<patients> mUsers;
     //private boolean ischat;
 
     //String theLastMessage;
 
-    public UserAdapter(Context mContext, List<User> mUsers){
+    public UserAdapter(Context mContext, ArrayList<patients> mUsers){
         this.mUsers = mUsers;
         this.mContext = mContext;
-        //this.ischat = ischat;
 
     }
 
@@ -51,8 +52,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        User user = mUsers.get(position);
-        holder.username.setText(user.getUsername());
+        patients user = mUsers.get(position);
+        holder.username.setText(user.getFirstName());
 
         //holder.itemView.setOnClickListener(new View.OnClickListener() {
         //    @Override
