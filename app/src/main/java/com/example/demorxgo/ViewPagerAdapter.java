@@ -4,23 +4,18 @@ import android.content.Context;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-public class SectionsPagerAdapter extends FragmentPagerAdapter {
+public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2,
-            R.string.tab_text_3,R.string.tab_text_4};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_5, R.string.tab_text_6};
 
     private final Context mContext;
 
-    public SectionsPagerAdapter(FragmentManager fm, Context context) {
+    public ViewPagerAdapter(FragmentManager fm, Context context) {
         super ( fm );
         mContext = context;
     }
@@ -33,16 +28,10 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                fragment = new Profile();
+                fragment = new ChatsFragment();
                 break;
             case 1:
-                fragment = new Prescriptions();
-                break;
-            case 2:
-                fragment = new Info();
-                break;
-            case 3:
-                fragment = new ContactD();
+                fragment = new UserFragment();
                 break;
         }
         return fragment;
@@ -59,6 +48,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return 2;
     }
 }
+
