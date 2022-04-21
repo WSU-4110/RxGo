@@ -51,6 +51,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
         patients user = mUsers.get(position);
         holder.username.setText(user.getFirstName());
+        holder.lastname.setText(user.getLastName());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,12 +72,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public  class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView username;
+        public TextView lastname;
         //private TextView last_msg;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             username = itemView.findViewById(R.id.username);
+            lastname = itemView.findViewById(R.id.lastname4);
             //last_msg = itemView.findViewById(R.id.last_msg);
         }
     }

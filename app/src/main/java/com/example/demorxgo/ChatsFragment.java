@@ -86,8 +86,6 @@ public class ChatsFragment extends Fragment {
             }
         });
 
-        //updateToken(FirebaseInstallations.getInstance().getToken());
-
         FirebaseInstallations.getInstance().getId()
                 .addOnCompleteListener(new OnCompleteListener<String>() {
                     @Override
