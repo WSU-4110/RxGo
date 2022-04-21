@@ -23,6 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -125,26 +126,28 @@ public class MessageActivity extends AppCompatActivity {
             reference.child("Chats").push().setValue(hashMap);
         }
 
-        private void readMessages(final String myid, final String userid){
+        private void readMessages(final String myID, final String userID){
             mchat = new ArrayList<>();
 
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("messages");
-            reference.addValueEventListener(new ValueEventListener() {
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Chats");
+            Query query = ref.orderByKey();
+
+            query.addValueEventListener(new ValueEventListener()
+            {
+
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     mchat.clear();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Chat chat = snapshot.getValue(Chat.class);
-                        final String sender = chat.getSender();
-                        final String receiver = chat.getReceiver();
 
-                        if ("myid".equals(sender) && "userid".equals(receiver) || "myid".equals(receiver) && "userid".equals(sender)) {
-
-                            mchat.add(chat);
+                        assert chat != null;
+                        if ( chat.getSender().equals(myID) &&  chat.getReceiver().equals(userID) ||
+                                chat.getSender().equals(userID) &&  chat.getReceiver().equals(myID)) {
+                            mchat.add(chat) ;
                         }
 
-                        messageAdapter = new MessageAdapter(MessageActivity.this, mchat);
-                        recyclerView.setAdapter(messageAdapter);
+
                     }
                 }
                 @Override
