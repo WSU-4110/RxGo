@@ -55,7 +55,6 @@ public class adapter2 extends RecyclerView.Adapter<adapter2.MyViewHolder> implem
     @Override
     public void onBindViewHolder(@NonNull adapter2.MyViewHolder holder, final int position) {
         patients p = arrayList.get ( position );
-
         holder.first.setText ( p.getFirstName () );
         holder.last.setText ( p.getLastName () );
         holder.Bday.setText ( p.getBirthday () );
@@ -66,7 +65,8 @@ public class adapter2 extends RecyclerView.Adapter<adapter2.MyViewHolder> implem
         holder.saveMe.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View v) {
-                DocumentReference df = fStore.collection ( "prescriber" ).document (fAuth.getUid ()).collection ( "Patients" ).document (p.getId ());
+                DocumentReference df = fStore.collection ( "prescriber" ).document
+                        (fAuth.getUid ()).collection ( "Patients" ).document (p.getId ());
                 Map<String, Object> newPt = new HashMap<> ();
                 newPt.put ( "ID",p.getId () );
                 newPt.put ( "First Name",p.getFirstName () );
