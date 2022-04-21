@@ -6,8 +6,8 @@ public class Drug {
     String SideEffects;
     String Drug;
 
-    public Drug(String commonUses) {
-        CommonUses = commonUses;
+    public Drug(String CommonUses, String SideEffects, String Drug) {
+        CommonUses = CommonUses;
         SideEffects = SideEffects;
         Drug = Drug;
     }

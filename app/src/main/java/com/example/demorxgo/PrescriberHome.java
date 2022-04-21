@@ -1,31 +1,22 @@
 package com.example.demorxgo;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
-
-import com.example.demorxgo.databinding.ActivityPrescriberHomeBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-
 public class PrescriberHome extends AppCompatActivity {
 
     //variable declarations
-    Button patientsB, prescribeB, messsagesB;
+    Button patientsB, prescribeB, messsagesB, profile;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +30,7 @@ public class PrescriberHome extends AppCompatActivity {
         patientsB= findViewById ( R.id.patientBtn );
         prescribeB = findViewById ( R.id.prescribeBtn );
         messsagesB = findViewById ( R.id.messagesBtn );
+        profile = findViewById ( R.id.profileBtn );
 
 
         //button listeners and starting new pages
@@ -68,7 +60,14 @@ public class PrescriberHome extends AppCompatActivity {
             }
         } );
 
-    }
+        profile.setOnClickListener ( new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent (getApplicationContext(),PrescriberProfile.class));
+                finish();
 
+            }
+        } );
+    }
 
 }

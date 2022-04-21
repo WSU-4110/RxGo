@@ -57,7 +57,9 @@ public class PatientList extends AppCompatActivity {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful ()) {
                     for (QueryDocumentSnapshot document : task.getResult ()) {
-                        ptSearch.add ( new patients ( document.get ( "First Name" ).toString (), document.get ( "Last Name" ).toString (), document.get ( "BirthDay" ).toString (), document.getId () ) );
+                        ptSearch.add ( new patients ( document.get ( "First Name" ).toString (),
+                                document.get ( "Last Name" ).toString (), document.get ( "BirthDay" ).toString (),
+                                document.getId () ) );
                     }
 
                 }
@@ -95,13 +97,15 @@ public class PatientList extends AppCompatActivity {
 
                 //---------------------------------------------//
                 //building array of saved patient IDs
-                fStore2.collection ( "prescriber" ).document (fAuth.getUid ()).collection ( "Patients" ).get().addOnCompleteListener ( new OnCompleteListener<QuerySnapshot> () {
+                fStore2.collection ( "prescriber" ).document (fAuth.getUid ()).collection
+                        ( "Patients" ).get().addOnCompleteListener ( new OnCompleteListener<QuerySnapshot> () {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful ())
                         {
                             for(QueryDocumentSnapshot document : task.getResult ()) {
-                                ptSaved.add ( new patients ( document.get ( "First Name" ).toString (), document.get ( "Last Name" ).toString (), document.get ( "BirthDay" ).toString (), document.getId () ) );
+                                ptSaved.add ( new patients ( document.get ( "First Name" ).toString (), document.get ( "Last Name" ).toString (),
+                                        document.get ( "BirthDay" ).toString (), document.getId () ) );
                             }
                         }
 
