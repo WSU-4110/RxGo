@@ -18,6 +18,9 @@
             android:name=".ChatMessage"
             android:exported="false" />
         <activity
+            android:name=".MessageActivity"
+            android:exported="false"/>
+        <activity
             android:name=".PatientList"
             android:exported="false" />
         <activity

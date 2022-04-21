@@ -32,9 +32,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     private Context mContext;
     private ArrayList<patients> mUsers;
-    //private boolean ischat;
-
-    //String theLastMessage;
 
     public UserAdapter(Context mContext, ArrayList<patients> mUsers){
         this.mUsers = mUsers;
@@ -55,14 +52,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         patients user = mUsers.get(position);
         holder.username.setText(user.getFirstName());
 
-        //holder.itemView.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        //        Intent intent = new Intent(mContext, ChatMessage.class);
-        //        intent.putExtra("userid", user.getId());
-        //        mContext.startActivity(intent);
-        //    }
-        //});
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, MessageActivity.class);
+                intent.putExtra("userid", user.getId());
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -83,43 +80,4 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             //last_msg = itemView.findViewById(R.id.last_msg);
         }
     }
-
-    //check for last message
-   //private void lastMessage(final String userid, final TextView last_msg){
-   //    theLastMessage = "default";
-   //    final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-   //    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Chats");
-
-   //    reference.addValueEventListener(new ValueEventListener() {
-   //        @Override
-   //        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-   //            for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-   //                Chat chat = snapshot.getValue(Chat.class);
-   //                if (firebaseUser != null && chat != null) {
-   //                    if (chat.getReceiver().equals(firebaseUser.getUid()) && chat.getSender().equals(userid) ||
-   //                            chat.getReceiver().equals(userid) && chat.getSender().equals(firebaseUser.getUid())) {
-   //                        theLastMessage = chat.getMessage();
-   //                    }
-   //                }
-   //            }
-
-   //            switch (theLastMessage){
-   //                case  "default":
-   //                    last_msg.setText("No Message");
-   //                    break;
-
-   //                default:
-   //                    last_msg.setText(theLastMessage);
-   //                    break;
-   //            }
-
-   //            theLastMessage = "default";
-   //        }
-//
-    //        @Override
-    //        public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-    //        }
-    //    });
-    //}
 }

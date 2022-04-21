@@ -79,8 +79,6 @@ public class UserFragment extends Fragment {
                         mUsers.add(new patients(document.get("First Name").toString(), document.get("Last Name").toString(), document.get("BirthDay").toString(), document.getId()));
                     }
                 }
-                //all the same stuff but passing through array of saved patients
-                //FacebookSdk.sdkInitialize(getApplicationContext());
 
                 recyclerView = getView().findViewById(R.id.recycler_view);//assign variable
 
@@ -90,70 +88,9 @@ public class UserFragment extends Fragment {
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
                 recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
 
-                //final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
-                //fAuth = FirebaseAuth.getInstance();
-                //fStore = FirebaseFirestore.getInstance();
-                //userID = fAuth.getCurrentUser().getUid();
-
-                //atabaseReference reference = fStore;
-                //DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Patients");
-                //
-                //reference.addValueEventListener(new ValueEventListener() {
-                //    @Override
-                //    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //        mUsers.clear();
-                //        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                //            User user = snapshot.getValue(User.class);
-//
-                //            if (!user.getId().equals(firebaseUser.getUid())) {
-                //                mUsers.add(user);
-                //            }
-//
-                //        }
-//
-                //        userAdapter = new UserAdapter(getContext(), mUsers);
-                //        recyclerView.setAdapter(userAdapter);
-                //    }
             }
-            //@Override
-            //public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-            //}
+
         });
     }
-    //private void searchUsers(String s) {
-//
-    //    final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-    //    Query query = FirebaseDatabase.getInstance().getReference("prescriber").orderByChild("search")
-    //            .startAt(s)
-    //            .endAt(s+"\uf8ff");
-//
-    //    query.addValueEventListener(new ValueEventListener() {
-    //        @Override
-    //        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-    //            mUsers.clear();
-    //            for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-    //                User user = snapshot.getValue(User.class);
-//
-    //                assert user != null;
-    //                assert firebaseUser != null;
-    //                if (!user.getId().equals(firebaseUser.getUid())){
-    //                    mUsers.add(user);
-    //                }
-    //            }
-//
-    //            userAdapter = new UserAdapter(getContext(), mUsers);
-    //            recyclerView.setAdapter(userAdapter);
-    //        }
-//
-    //        @Override
-    //        public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-    //        }
-    //    });
-//
-    //}
-
 
 }
