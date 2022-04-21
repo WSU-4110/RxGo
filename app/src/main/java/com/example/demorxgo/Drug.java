@@ -37,5 +37,14 @@ public class Drug {
         Drug = drug;
     }
 
+    public boolean equals(String x)
+    {
+        if (this.getDrug() == x)
+        {
+            return true;
+        }
+        return false;
+    }
+
 
 }

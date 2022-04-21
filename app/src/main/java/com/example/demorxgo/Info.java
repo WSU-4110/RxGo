@@ -43,8 +43,8 @@ public class Info extends Fragment {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String uses, side;
+    String drug;
     EditText UserInput;
-    ArrayList<Drug> drugSearch = new ArrayList<Drug>();
     Activity activity = getActivity();
 
     FragmentInfoBinding binding;
@@ -57,7 +57,6 @@ public class Info extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
     }
 
@@ -96,50 +95,34 @@ public class Info extends Fragment {
 
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                drugSearch.add(new Drug (document.get("Common Uses").toString(),
-                                     document.get("Side effects").toString(), document.get("Drug").toString()
-                                ));
-                                Log.d(TAG, "Task was Successful");
+                                Log.d(TAG,"comparing: "+document.get("Drug").toString()+UserInput.getText().toString());
 
-                            }
-                        }
-
-                        for (Drug d : drugSearch){
-                            Log.d(TAG, "Drug Search Starting");
-                            //Log.d(TAG, d.getDrug());
-
-                            if((d.getDrug().equals(UserInput.getText().toString())))
-                            {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-                                builder.setTitle(d.getDrug());
-                                builder.setMessage("Drug: " + d.getDrug() + "\n\n" +
-                                        "\n" + "Common Uses:\n" + d.getCommonUses() +
-                                        "\n" + "Side Effects: " + d.getSideEffects());
-                                builder.show();
-                            }
-                        }
-                        /*
-                        for (int i = 0; i < drugSearch.size(); i++) {
-                                Log.d(TAG,drugSearch.get(i).getDrug()+"1");
-                                Log.d(TAG,UserInput.getText().toString()+"2");
-
-                                if (drugSearch.get(i).getDrug().equals(UserInput.getText().toString())) {
+                                if(document.get("Drug").toString().equals(UserInput.getText().toString()))
+                                {
+                                    Log.d(TAG,document.get("Drug").toString());
                                     AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-                                    builder.setTitle(drugSearch.get(i).getDrug());
-                                    builder.setMessage("Drug: " + drugSearch.get(i).getDrug() + "\n\n" +
-                                            "\n" + "Common Uses:\n" + drugSearch.get(i).getCommonUses() +
-                                            "\nSide Effects: " + drugSearch.get(i).getSideEffects());
-                                    builder.show();
+                                    builder.setTitle(document.get("Drug").toString());
+                                    builder.setMessage("Drug: " + document.get("Drug").toString() + "\n\n" +
+                                            "\n" + "Common Uses:\n" + document.get("Common Uses").toString()+
+                                            "\n" + "Side Effects: " + document.get("Side effects").toString());
+                                    builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            dialogInterface.cancel();
+                                            // drug.setText(d.getDrug();
+                                        }
+                                    });
                                 }
-                                else {
-                                    Log.d(TAG, "Strings not equal to each other");
 
-                                }
-                            }*/
+                            }
+                        }
+
                     }
                 });
             }
         });
     }
+
+
 }
 
