@@ -15,7 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class PrescriberHome extends AppCompatActivity {
 
     //variable declarations
-    Button patientsB, prescribeB, messsagesB;
+    Button patientsB, prescribeB, messsagesB, refillRequestsB;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
@@ -34,6 +34,7 @@ public class PrescriberHome extends AppCompatActivity {
         patientsB= findViewById ( R.id.patientBtn );
         prescribeB = findViewById ( R.id.prescribeBtn );
         messsagesB = findViewById ( R.id.messagesBtn );
+        refillRequestsB = findViewById ( R.id.rRequestBtn );
 
 
         //button listeners and starting new pages
@@ -62,6 +63,14 @@ public class PrescriberHome extends AppCompatActivity {
                 finish();
             }
         } );
+
+        refillRequestsB.setOnClickListener ( new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                startActivity ( new Intent(getApplicationContext (),refillRequestList.class) );
+            }
+        } );
+
 
     }
 
