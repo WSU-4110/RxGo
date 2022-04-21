@@ -34,8 +34,7 @@ public class Patient extends AppCompatActivity {
     Button mLoginBtn;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
-
-    FirebaseFirestore fStore, fStore2;
+    FirebaseFirestore fStore;
   
     ArrayList<String> patientsArrayList = new ArrayList<String> ();
 

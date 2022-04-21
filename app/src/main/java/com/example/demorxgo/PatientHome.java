@@ -9,7 +9,9 @@ import android.view.View;
 import androidx.viewpager.widget.ViewPager;
 
 import android.widget.Button;
+
 import android.widget.EditText;
+
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
@@ -19,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.example.demorxgo.databinding.ActivityPatientHomeBinding;
+import com.example.demorxgo.databinding.FragmentPatientHomeBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -30,21 +33,19 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 public class PatientHome extends AppCompatActivity{
 
     private ActivityPatientHomeBinding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate ( savedInstanceState );
 
-        binding = ActivityPatientHomeBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        binding = ActivityPatientHomeBinding.inflate ( getLayoutInflater () );
+        setContentView ( binding.getRoot () );
 
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(),this);
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter ( getSupportFragmentManager (), this );
         ViewPager viewPager;
         viewPager = binding.viewpager;
         viewPager.setAdapter ( sectionsPagerAdapter );
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager ( viewPager );
-
     }
 
     public void a(){

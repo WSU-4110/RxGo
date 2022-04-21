@@ -3,17 +3,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.tabs.TabLayout;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class PrescriberHome extends AppCompatActivity {
 
     //variable declarations
-    Button patientsB, prescribeB, messsagesB, profile;
+
+    Button patientsB, prescribeB, messsagesB, refillRequestsB;
+
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
@@ -30,7 +34,10 @@ public class PrescriberHome extends AppCompatActivity {
         patientsB= findViewById ( R.id.patientBtn );
         prescribeB = findViewById ( R.id.prescribeBtn );
         messsagesB = findViewById ( R.id.messagesBtn );
-        profile = findViewById ( R.id.profileBtn );
+
+
+        refillRequestsB = findViewById ( R.id.rRequestBtn );
+
 
 
         //button listeners and starting new pages
@@ -55,16 +62,21 @@ public class PrescriberHome extends AppCompatActivity {
         messsagesB.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Messaging.class));
+                startActivity(new Intent(getApplicationContext(), ChatMessage.class));
                 finish();
             }
         } );
 
-        profile.setOnClickListener ( new View.OnClickListener () {
+        refillRequestsB.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent (getApplicationContext(),PrescriberProfile.class));
-                finish();
+                startActivity ( new Intent(getApplicationContext (),refillRequestList.class) );
+            }
+        } );
+
+
+    }
+
 
             }
         } );

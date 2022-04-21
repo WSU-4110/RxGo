@@ -44,7 +44,6 @@ public class PatientList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_patient_list );
-
         //decided to do everything inside another function.. no reason i think
         fillPtList ( ptSearch );
     }
@@ -61,7 +60,6 @@ public class PatientList extends AppCompatActivity {
                                 document.get ( "Last Name" ).toString (), document.get ( "BirthDay" ).toString (),
                                 document.getId () ) );
                     }
-
                 }
 
                 //recyclerview setup with Search View filter
@@ -74,7 +72,7 @@ public class PatientList extends AppCompatActivity {
                 searchL.addItemDecoration(new DividerItemDecoration (PatientList.this,LinearLayoutManager.VERTICAL));//syntax for vertical scrolling i think
                 searchL.setAdapter(pa);//set up adapter with recycler
 
-                    //Search View setup
+                //Search View setup
                 searchMe = (SearchView) findViewById ( R.id.searchPt );//assign variable name
 
                 searchMe.setImeOptions( EditorInfo.IME_ACTION_DONE);//syntax no idea what this one does
