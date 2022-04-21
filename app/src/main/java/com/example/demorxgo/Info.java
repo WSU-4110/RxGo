@@ -124,10 +124,8 @@ public class Info extends Fragment {
                                     });
                                     builder.show();
                                 }
-
                             }
                         }
-
                     }
                 });
             }
