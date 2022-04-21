@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoRxGo">
         <activity
+            android:name=".refillRequestList"
+            android:exported="false" />
+        <activity
             android:name=".PrescribingRefill"
             android:exported="false" />
         <activity
