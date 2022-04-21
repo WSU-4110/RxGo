@@ -87,7 +87,6 @@ public class MessageActivity extends AppCompatActivity {
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //        notify = true;
                 String msg = text_send.getText().toString();
                 if (!msg.equals("")) {
                     sendMessage(fAuth.getUid(), userid, msg);
@@ -97,9 +96,8 @@ public class MessageActivity extends AppCompatActivity {
                 text_send.setText("");
             }
         });
-
         intent = getIntent();
-        String userid = intent.getStringExtra("userid");
+        userid = intent.getStringExtra("userid");
 
         DocumentReference reference = fStore.collection("prescriber").document(fAuth.getUid()).collection("Patients").document(userid);
         reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -130,7 +128,7 @@ public class MessageActivity extends AppCompatActivity {
         private void readMessages(final String myid, final String userid){
             mchat = new ArrayList<>();
 
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Chats");
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("messages");
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
