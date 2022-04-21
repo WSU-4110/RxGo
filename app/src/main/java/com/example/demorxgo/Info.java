@@ -48,7 +48,6 @@ public class Info extends Fragment {
 
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-
     String uses, side;
     String drug;
     EditText UserInput;
@@ -88,15 +87,7 @@ public class Info extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_info, container, false);
     }
-    public void setButton(){
-        Button b = (Button) getView ().findViewById ( R.id.testing );
-        b.setOnClickListener ( new View.OnClickListener () {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG,"click!");
-            }
-        } );
-    }
+
 
     public void Button() {
         Button SearchBtn;
@@ -121,7 +112,7 @@ public class Info extends Fragment {
                                     Log.d(TAG,document.get("Drug").toString());
                                     AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                                     builder.setTitle(document.get("Drug").toString());
-                                    builder.setMessage("Drug: " + document.get("Drug").toString() + "\n\n" +
+                                    builder.setMessage("Drug: " + document.get("Drug").toString() + "\n" +
                                             "\n" + "Common Uses:\n" + document.get("Common Uses").toString()+
                                             "\n" + "Side Effects: " + document.get("Side effects").toString());
                                     builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
@@ -131,6 +122,7 @@ public class Info extends Fragment {
                                             // drug.setText(d.getDrug();
                                         }
                                     });
+                                    builder.show();
                                 }
 
                             }

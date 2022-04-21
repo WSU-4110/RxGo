@@ -1,6 +1,9 @@
 package com.example.demorxgo;
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -31,55 +34,50 @@ public class PrescriberHome extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userID = fAuth.getCurrentUser().getUid();
-        patientsB= findViewById ( R.id.patientBtn );
-        prescribeB = findViewById ( R.id.prescribeBtn );
-        messsagesB = findViewById ( R.id.messagesBtn );
+        patientsB = findViewById(R.id.patientBtn);
+        prescribeB = findViewById(R.id.prescribeBtn);
+        messsagesB = findViewById(R.id.messagesBtn);
 
 
-        refillRequestsB = findViewById ( R.id.rRequestBtn );
-
+        refillRequestsB = findViewById(R.id.rRequestBtn);
 
 
         //button listeners and starting new pages
-        patientsB.setOnClickListener ( new View.OnClickListener () {
+        patientsB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),PatientList.class));
+                startActivity(new Intent(getApplicationContext(), PatientList.class));
                 finish();
 
             }
-        } );
+        });
 
-        prescribeB.setOnClickListener ( new View.OnClickListener () {
+        prescribeB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent (getApplicationContext(),PrescribingPage.class));
+                startActivity(new Intent(getApplicationContext(), PrescribingPage.class));
                 finish();
 
             }
-        } );
+        });
 
-        messsagesB.setOnClickListener ( new View.OnClickListener () {
+        messsagesB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), ChatMessage.class));
                 finish();
             }
-        } );
+        });
 
-        refillRequestsB.setOnClickListener ( new View.OnClickListener () {
+        refillRequestsB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity ( new Intent(getApplicationContext (),refillRequestList.class) );
+                startActivity(new Intent(getApplicationContext(), refillRequestList.class));
             }
-        } );
+        });
 
 
     }
 
-
-            }
-        } );
-    }
 
 }

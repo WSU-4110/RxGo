@@ -92,7 +92,8 @@ public class adapter extends RecyclerView.Adapter<adapter.MyViewHolder> {
                 AlertDialog.Builder builder = new AlertDialog.Builder ( v.getContext () );
                 builder.setTitle(d.getDrug ());
                 builder.setMessage("Rx#: "+d.getId ()+"\n\n"+d.getDrug ()+ " "+d.getStrength ()+"\n"+"Sig:\n"+d.getSig ()+
-                        "\nWritten: "+d.getDate ()+"\n\n"+"Refills: "+d.getRefills ()+"\n\n"+"Dr: "+d.getDr ()+"\nPhone: "+d.getdPhone ());
+                        "\nWritten: "+d.getDate ()+"\n\n"+"Refills: "+d.getRefills ()+"\n\n"+"Dr: "+d.getDr ()+
+                        "\nPhone: "+d.getdPhone ());
 
                 //buttons on the dialog box
                 builder.setNegativeButton("Close Prescription", new DialogInterface.OnClickListener() {
