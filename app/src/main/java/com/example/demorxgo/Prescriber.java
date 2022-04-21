@@ -11,11 +11,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.text.format.DateFormat;
 
+
+import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Calendar;
+
 
 //Prescriber login screen
 public class Prescriber extends AppCompatActivity {
@@ -74,6 +84,8 @@ public class Prescriber extends AppCompatActivity {
                             Toast.makeText(Prescriber.this, "Successfully Logged In", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(Prescriber.this, PrescriberHome.class);
                             startActivity(intent);
+
+                            //displayChatMessage();
 
                         } else {
                             //failed login
