@@ -26,4 +26,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(),Prescriber.class));
         finish();
     }
+
+
+
 }

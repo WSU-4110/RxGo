@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PrescribingRefill">
+
+    <EditText
+        android:id="@+id/lNameR"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="125dp"
+        android:ems="10"
+        android:hint="Last"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextDateR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="25dp"
+        android:ems="10"
+        android:hint="Date"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/DrugR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="Drug"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lNameR" />
+
+    <EditText
+        android:id="@+id/QuantityR"
+        android:layout_width="74dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="Q#/mL"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/StrengthR"
+        app:layout_constraintTop_toBottomOf="@+id/lNameR" />
+
+    <EditText
+        android:id="@+id/SigR"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="Sig"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DrugR" />
+
+    <EditText
+        android:id="@+id/RefillsR"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="75dp"
+        android:ems="10"
+        android:hint="R#"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SigR" />
+
+    <EditText
+        android:id="@+id/StrengthR"
+        android:layout_width="58dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="mg"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/DrugR"
+        app:layout_constraintTop_toBottomOf="@+id/lNameR" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="87dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Refills:"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toStartOf="@+id/RefillsR"
+        app:layout_constraintTop_toBottomOf="@+id/SigR" />
+
+    <Button
+        android:id="@+id/sendRefillBtn"
+        android:layout_width="115dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:text="Send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <EditText
+        android:id="@+id/BirthdayR"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="125dp"
+        android:ems="10"
+        android:hint="Bday MM-DD-YYYY"
+        android:inputType="date"
+        app:layout_constraintStart_toEndOf="@+id/lNameR"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/fNameR"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="125dp"
+        android:layout_marginEnd="5dp"
+        android:ems="10"
+        android:hint="First Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/lNameR"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButtonb"
+        android:layout_width="43dp"
+        android:layout_height="48dp"
+        android:onClick="backToPatientProfile"
+        android:contentDescription="@string/tab_text_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_media_previous"
+        tools:ignore="ImageContrastCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
