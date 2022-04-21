@@ -78,6 +78,8 @@ public class MessageActivity extends AppCompatActivity {
         btn_send = findViewById(R.id.btn_send);
         text_send = findViewById(R.id.text_send);
 
+        Intent intent;
+
 
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,21 +95,24 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-        //DocumentReference reference = fStore.collection("prescriber").document(fAuth.getUid()).collection("Patients").document(userid);
-        //reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-        //    @Override
-        //    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-        //        DocumentSnapshot document = task.getResult();
-        //        if (document.exists()) {
-        //            firstN.setText(document.get("First Name").toString());
-        //        }
-        //    }
-        //});
+        intent = getIntent();
+        String userid = intent.getStringExtra("userid");
+
+        DocumentReference reference = fStore.collection("prescriber").document(fAuth.getUid()).collection("Patients").document(userid);
+        reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    firstN.setText(document.get("First Name").toString());
+                }
+            }
+        });
     }
 
         private void sendMessage (String sender,final String receiver, String message){
 
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("messages");
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Chats");
 
             HashMap<String, Object> hashMap = new HashMap<>();
             hashMap.put("sender", sender);
