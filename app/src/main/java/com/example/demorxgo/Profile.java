@@ -61,19 +61,19 @@ public class Profile extends Fragment {
             }
         });
 
-
-        DocumentReference prescriber = fStore.collection("prescriber").document(userID);
-        //getting user info from database
-        df.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                DocumentSnapshot document = task.getResult();
-                if (document.exists()) {
-                    //calling functions to set info in text fields
-                    setTextDoc((String)document.get("First Name:"));
-                }
-            }
-        });
+//
+//        DocumentReference prescriber = fStore.collection("prescriber").document(userID);
+//        //getting user info from database
+//        df.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                DocumentSnapshot document = task.getResult();
+//                if (document.exists()) {
+//                    //calling functions to set info in text fields
+//                    setTextDoc((String)document.get("First Name:"));
+//                }
+//            }
+//        });
 
         return inflater.inflate(R.layout.fragment_patient_home, container, false);
     }
@@ -103,10 +103,7 @@ public class Profile extends Fragment {
         TextView textView = (TextView) getView().findViewById(R.id.email);
         textView.setText(text);
     }
-    public void setTextDoc(String text) {
-        TextView textView = (TextView) getView().findViewById(R.id.doc);
-        textView.setText(text);
-    }
+
 
 
 }
