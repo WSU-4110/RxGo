@@ -9,6 +9,9 @@ import android.view.View;
 import androidx.viewpager.widget.ViewPager;
 
 import android.widget.Button;
+
+import android.widget.EditText;
+
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
@@ -43,6 +46,10 @@ public class PatientHome extends AppCompatActivity{
         viewPager.setAdapter ( sectionsPagerAdapter );
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager ( viewPager );
+    }
+
+    public void a(){
+        Log.d(TAG,"a");
     }
 
 }

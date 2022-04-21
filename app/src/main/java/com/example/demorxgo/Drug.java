@@ -6,8 +6,8 @@ public class Drug {
     String SideEffects;
     String Drug;
 
-    public Drug(String commonUses) {
-        CommonUses = commonUses;
+    public Drug(String CommonUses, String SideEffects, String Drug) {
+        CommonUses = CommonUses;
         SideEffects = SideEffects;
         Drug = Drug;
     }
@@ -35,6 +35,15 @@ public class Drug {
 
     public void setDrug(String drug) {
         Drug = drug;
+    }
+
+    public boolean equals(String x)
+    {
+        if (this.getDrug() == x)
+        {
+            return true;
+        }
+        return false;
     }
 
 

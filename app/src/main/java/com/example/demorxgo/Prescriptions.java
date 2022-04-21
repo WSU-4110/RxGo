@@ -60,7 +60,7 @@ public class Prescriptions extends Fragment {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         //creating drug list array
                         ptHis.add(new prescription(document.getId().toString(), document.get("Drug").toString(), document.get("Drug Strength").toString(),document.get("Refills").toString (), document.get("Dr").toString (),document.get("dPhone").toString(),document.get("Date").toString (), document.get( "Sig" ).toString()));
-                        Log.d(TAG, ptHis.toString());
+
                     }
 
                     //recycler view here so that full prescription list is passed to recycler
@@ -71,7 +71,6 @@ public class Prescriptions extends Fragment {
                     rv.setItemAnimator(new DefaultItemAnimator());
                     rv.addItemDecoration(new DividerItemDecoration(getContext (),LinearLayoutManager.VERTICAL));
                 }
-
             }
         });
         // Inflate the layout for this fragment
