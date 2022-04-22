@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 public class adapter2 extends RecyclerView.Adapter<adapter2.MyViewHolder> implements Filterable {
-    private ArrayList<patients> arrayList = new ArrayList<patients> ();
+    private ArrayList<patients> arrayList;
     private ArrayList<patients> arrayListFull;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
@@ -45,6 +45,7 @@ public class adapter2 extends RecyclerView.Adapter<adapter2.MyViewHolder> implem
         }
     }
 
+    @NonNull
     @Override
     public adapter2.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Log.v ( "CreateViewHolder", "in onCreateViewHolder" );
@@ -62,19 +63,16 @@ public class adapter2 extends RecyclerView.Adapter<adapter2.MyViewHolder> implem
         fAuth=FirebaseAuth.getInstance ();
 
         //saving patient in dr's patients collection
-        holder.saveMe.setOnClickListener ( new View.OnClickListener () {
-            @Override
-            public void onClick(View v) {
-                DocumentReference df = fStore.collection ( "prescriber" ).document
-                        (fAuth.getUid ()).collection ( "Patients" ).document (p.getId ());
-                Map<String, Object> newPt = new HashMap<> ();
-                newPt.put ( "ID",p.getId () );
-                newPt.put ( "First Name",p.getFirstName () );
-                newPt.put ( "Last Name",p.getLastName () );
-                newPt.put ( "BirthDay",p.getBirthday () );
-                df.set(newPt);
-                notifyDataSetChanged();
-            }
+        holder.saveMe.setOnClickListener ( v -> {
+            DocumentReference df = fStore.collection ( "prescriber" ).document
+                    (fAuth.getUid ()).collection ( "Patients" ).document (p.getId ());
+            Map<String, Object> newPt = new HashMap<> ();
+            newPt.put ( "ID",p.getId () );
+            newPt.put ( "First Name",p.getFirstName () );
+            newPt.put ( "Last Name",p.getLastName () );
+            newPt.put ( "BirthDay",p.getBirthday () );
+            df.set(newPt);
+            notifyDataSetChanged();
         } );
     }
 

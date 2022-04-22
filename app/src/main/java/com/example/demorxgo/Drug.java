@@ -39,11 +39,7 @@ public class Drug {
 
     public boolean equals(String x)
     {
-        if (this.getDrug() == x)
-        {
-            return true;
-        }
-        return false;
+        return this.getDrug () == x;
     }
 
 

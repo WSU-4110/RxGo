@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,7 +33,7 @@ public class PrescriberProfile extends AppCompatActivity {
     }//syntax
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ;//inflate layout file(b/c fragments)
+        //inflate layout file(b/c fragments)
         View view =  inflater.inflate(R.layout.prescriber_profile, container, false);
         Log.d(TAG, "View");
 
