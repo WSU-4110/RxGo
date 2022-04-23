@@ -5,11 +5,8 @@ import android.content.Context;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -22,6 +19,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public SectionsPagerAdapter(FragmentManager fm, Context context) {
         super ( fm );
         mContext = context;
+
+
     }
 
     @Override
@@ -44,6 +43,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment = new ContactD();
                 break;
         }
+
         return fragment;
 
 
@@ -60,4 +60,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return 4;
     }
+
+
 }

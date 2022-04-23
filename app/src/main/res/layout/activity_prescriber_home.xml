@@ -6,12 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".PrescriberHome">
 
-
     <Button
         android:id="@+id/patientBtn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="125dp"
         android:text="Patients"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -25,6 +24,7 @@
         android:layout_marginTop="25dp"
         android:text="Prescribe"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/patientBtn" />
 
@@ -35,6 +35,19 @@
         android:layout_marginTop="25dp"
         android:text="Messaging"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/prescribeBtn" />
+
+    <Button
+        android:id="@+id/rRequestBtn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Refill Requests"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/messagesBtn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

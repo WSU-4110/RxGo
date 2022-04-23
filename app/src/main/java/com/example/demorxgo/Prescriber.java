@@ -1,8 +1,5 @@
 package com.example.demorxgo;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,10 +9,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
+
 
 //Prescriber login screen
 public class Prescriber extends AppCompatActivity {
@@ -39,53 +36,49 @@ public class Prescriber extends AppCompatActivity {
         mLoginBtn = findViewById(R.id.login2);
 
         //login button click listener
-        mLoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mLoginBtn.setOnClickListener( v -> {
 
-                //getting Strings that have been typed into the email and password fields
-                String email = mEmail.getText().toString().trim();
-                String password = mPassword.getText().toString().trim();
+            //getting Strings that have been typed into the email and password fields
+            String email = mEmail.getText().toString().trim();
+            String password = mPassword.getText().toString().trim();
 
-                //checking for errors
-                if (TextUtils.isEmpty(email)) {
-                    mEmail.setError("Email is Required.");
-                    return;
-                }
-
-                if (TextUtils.isEmpty(password)) {
-                    mPassword.setError("Password is Required.");
-                    return;
-                }
-
-                if (password.length() < 6) {
-                    mPassword.setError("Password Must be >= 6 Characters");
-                    return;
-                }
-
-                progressBar.setVisibility(View.VISIBLE);
-
-                // authenticating the user with database
-                fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            //loging in
-                            Toast.makeText(Prescriber.this, "Successfully Logged In", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(Prescriber.this, PrescriberHome.class);
-                            startActivity(intent);
-
-                        } else {
-                            //failed login
-                            Toast.makeText(Prescriber.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            progressBar.setVisibility(View.GONE);
-                        }
-
-                    }
-                });
-
+            //checking for errors
+            if (TextUtils.isEmpty(email)) {
+                mEmail.setError("Email is Required.");
+                return;
             }
-        });
+
+            if (TextUtils.isEmpty(password)) {
+                mPassword.setError("Password is Required.");
+                return;
+            }
+
+            if (password.length() < 6) {
+                mPassword.setError("Password Must be >= 6 Characters");
+                return;
+            }
+
+            progressBar.setVisibility(View.VISIBLE);
+
+            // authenticating the user with database
+            fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener( task -> {
+                if (task.isSuccessful()) {
+                    //loging in
+                    Toast.makeText(Prescriber.this, "Successfully Logged In", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(Prescriber.this, PrescriberHome.class);
+                    startActivity(intent);
+
+                    //displayChatMessage();
+
+                } else {
+                    //failed login
+                    Toast.makeText(Prescriber.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
+                }
+
+            } );
+
+        } );
 
     }
 
