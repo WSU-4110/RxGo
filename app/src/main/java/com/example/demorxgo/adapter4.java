@@ -1,10 +1,7 @@
 package com.example.demorxgo;
 
-import static android.content.ContentValues.TAG;
-
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class adapter4 extends RecyclerView.Adapter<adapter4.MyViewHolder>{
-    private ArrayList<prescription> arrayList = new ArrayList<>();
+    private ArrayList<prescription> arrayList;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
 
@@ -52,6 +49,7 @@ public class adapter4 extends RecyclerView.Adapter<adapter4.MyViewHolder>{
     }
 
 
+    @NonNull
     @Override
     public adapter4.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int   viewType) {
         Log.v("CreateViewHolder", "in onCreateViewHolder");
@@ -72,35 +70,24 @@ public class adapter4 extends RecyclerView.Adapter<adapter4.MyViewHolder>{
         fStore = FirebaseFirestore.getInstance ();
         fAuth = FirebaseAuth.getInstance ();
 
-        holder.addRBtn.setOnClickListener ( new View.OnClickListener () {
-            @Override
-            public void onClick(View v) {
-                //add refills
+        holder.addRBtn.setOnClickListener ( v -> {
+            //add refills
 
-                DocumentReference df = fStore.collection ( "prescriber" ).document (fAuth.getUid ());
-                Map<String,Object> refillN = new HashMap<> ();
-                refillN.put("Refilling",d.getId ());
-                df.update (refillN);
+            DocumentReference df = fStore.collection ( "prescriber" ).document (fAuth.getUid ());
+            Map<String,Object> refillN = new HashMap<> ();
+            refillN.put("Refilling",d.getId ());
+            df.update (refillN);
 
-                holder.context.startActivity(new Intent (holder.context,PrescribingRefill.class));
-            }
+            holder.context.startActivity(new Intent (holder.context,PrescribingRefill.class));
         } );
 
-        holder.drug.setOnClickListener ( new View.OnClickListener () {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder ( v.getContext () );
-                builder.setTitle(d.getDrug ());
-                builder.setMessage("Rx#: "+d.getId ()+"\n\n"+d.getDrug ()+ " "+d.getStrength ()+"\n"+"Sig:\n"+d.getSig ()+"\nWritten: "+d.getDate ()+"\n\n"+"Refills: "+d.getRefills ()+"\n\n"+"Dr: "+d.getDr ()+"\nPhone: "+d.getdPhone ());
-                //buttons on the dialog box
-                builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel ();
-                    }
-                });
-                builder.show ();
-            }
+        holder.drug.setOnClickListener ( v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder ( v.getContext () );
+            builder.setTitle(d.getDrug ());
+            builder.setMessage("Rx#: "+d.getId ()+"\n\n"+d.getDrug ()+ " "+d.getStrength ()+"\n"+"Sig:\n"+d.getSig ()+"\nWritten: "+d.getDate ()+"\n\n"+"Refills: "+d.getRefills ()+"\n\n"+"Dr: "+d.getDr ()+"\nPhone: "+d.getdPhone ());
+            //buttons on the dialog box
+            builder.setNegativeButton("Close", (dialogInterface, i) -> dialogInterface.cancel () );
+            builder.show ();
         } );
 
     }

@@ -52,55 +52,52 @@ public class ViewPtProfile extends AppCompatActivity {
         birthD = findViewById ( R.id.ptBirth );
 
         DocumentReference df = fStore.collection ( "prescriber" ).document (fAuth.getUid ());
-        df.get ().addOnCompleteListener ( new OnCompleteListener<DocumentSnapshot> () {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                DocumentSnapshot document = task.getResult ();
-                if (document.exists ()) {
-                    PtID = document.get ( "Viewing" ).toString ();
-                    Log.d(TAG,PtID);
-                }
-
-
-                //---------------------------------------------------//
-                DocumentReference df2 = fStore2.collection ( "patients" ).document ( PtID );
-                df2.get ().addOnCompleteListener ( new OnCompleteListener<DocumentSnapshot> () {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        DocumentSnapshot document2 = task.getResult ();
-                        if (document.exists ()) {
-                            firstN.setText ( document2.get ( "First Name" ).toString () );
-                            lastN.setText ( document2.get ( "Last Name" ).toString () );
-                            birthD.setText ( document2.get("BirthDay").toString () );
-                        }
-                        Log.d(TAG,PtID);
-                        fStore3.collection ( "patients" ).document ( PtID ).collection ( "Prescriptions" ).get ().addOnCompleteListener ( new OnCompleteListener<QuerySnapshot> () {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful ()) {
-                                    for (QueryDocumentSnapshot document : task.getResult ()) {
-                                        //creating drug list array
-                                        ptHis.add ( new prescription ( document.getId ().toString (), document.get ( "Drug" ).toString (), document.get ( "Drug Strength" ).toString (), document.get ( "Refills" ).toString (), document.get ( "Dr" ).toString (), document.get ( "dPhone" ).toString (), document.get ( "Date" ).toString (), document.get ( "Sig" ).toString () ) );
-                                        Log.d ( TAG, ptHis.toString () );
-                                    }
-                                    pha = new adapter4(ptHis);
-                                    Log.d(TAG,"got adapter");
-
-                                    Log.d(TAG,ptHis.toString ());
-                                    ptRxList.setLayoutManager(new LinearLayoutManager (getApplicationContext ()));
-                                    ptRxList.setItemAnimator(new DefaultItemAnimator ());
-                                    ptRxList.addItemDecoration(new DividerItemDecoration (getApplicationContext (),LinearLayoutManager.VERTICAL));
-                                    ptRxList.setAdapter ( pha );
-                                    Log.d(TAG,"set adapter");
-                                }
-                            }
-                        } );
-                    }
-                });
-                    //---------------------------------------------------//
-
+        df.get ().addOnCompleteListener ( task -> {
+            DocumentSnapshot document = task.getResult ();
+            if (document.exists ()) {
+                PtID = document.get ( "Viewing" ).toString ();
+                Log.d(TAG,PtID);
             }
-        });
+
+
+            //---------------------------------------------------//
+            DocumentReference df2 = fStore2.collection ( "patients" ).document ( PtID );
+            df2.get ().addOnCompleteListener ( new OnCompleteListener<DocumentSnapshot> () {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    DocumentSnapshot document2 = task.getResult ();
+                    if (document.exists ()) {
+                        firstN.setText ( document2.get ( "First Name" ).toString () );
+                        lastN.setText ( document2.get ( "Last Name" ).toString () );
+                        birthD.setText ( document2.get("BirthDay").toString () );
+                    }
+                    Log.d(TAG,PtID);
+                    fStore3.collection ( "patients" ).document ( PtID ).collection ( "Prescriptions" ).get ().addOnCompleteListener ( new OnCompleteListener<QuerySnapshot> () {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful ()) {
+                                for (QueryDocumentSnapshot document : task.getResult ()) {
+                                    //creating drug list array
+                                    ptHis.add ( new prescription ( document.getId ().toString (), document.get ( "Drug" ).toString (), document.get ( "Drug Strength" ).toString (), document.get ( "Refills" ).toString (), document.get ( "Dr" ).toString (), document.get ( "dPhone" ).toString (), document.get ( "Date" ).toString (), document.get ( "Sig" ).toString () ) );
+                                    Log.d ( TAG, ptHis.toString () );
+                                }
+                                pha = new adapter4(ptHis);
+                                Log.d(TAG,"got adapter");
+
+                                Log.d(TAG,ptHis.toString ());
+                                ptRxList.setLayoutManager(new LinearLayoutManager (getApplicationContext ()));
+                                ptRxList.setItemAnimator(new DefaultItemAnimator ());
+                                ptRxList.addItemDecoration(new DividerItemDecoration (getApplicationContext (),LinearLayoutManager.VERTICAL));
+                                ptRxList.setAdapter ( pha );
+                                Log.d(TAG,"set adapter");
+                            }
+                        }
+                    } );
+                }
+            });
+                //---------------------------------------------------//
+
+        } );
     }
 
 
