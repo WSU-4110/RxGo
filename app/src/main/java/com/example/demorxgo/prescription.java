@@ -1,7 +1,5 @@
 package com.example.demorxgo;
 
-import android.app.AlertDialog;
-
 
 public class prescription {
 

@@ -6,10 +6,10 @@ public class Drug {
     String SideEffects;
     String Drug;
 
-    public Drug(String commonUses) {
-        CommonUses = commonUses;
-        SideEffects = SideEffects;
-        Drug = Drug;
+    public Drug(String CommonUses, String SideEffects, String Drug) {
+        this.CommonUses = CommonUses;
+        this.SideEffects = SideEffects;
+        this.Drug = Drug;
     }
 
 
@@ -35,6 +35,11 @@ public class Drug {
 
     public void setDrug(String drug) {
         Drug = drug;
+    }
+
+    public boolean equals(String x)
+    {
+        return this.getDrug () == x;
     }
 
 
