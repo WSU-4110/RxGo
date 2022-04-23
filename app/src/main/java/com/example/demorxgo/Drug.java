@@ -7,9 +7,9 @@ public class Drug {
     String Drug;
 
     public Drug(String CommonUses, String SideEffects, String Drug) {
-        CommonUses = CommonUses;
-        SideEffects = SideEffects;
-        Drug = Drug;
+        this.CommonUses = CommonUses;
+        this.SideEffects = SideEffects;
+        this.Drug = Drug;
     }
 
 
