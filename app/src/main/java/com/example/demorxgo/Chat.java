@@ -1,7 +1,5 @@
 package com.example.demorxgo;
 
-import java.util.Date;
-
 public class Chat {
     private String sender;
     private String receiver;

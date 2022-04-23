@@ -2,33 +2,14 @@ package com.example.demorxgo;
 
 import static android.content.ContentValues.TAG;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import android.widget.Button;
-
-import android.widget.EditText;
-
-import android.widget.TextView;
-import androidx.appcompat.widget.Toolbar;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-
-
 import com.example.demorxgo.databinding.ActivityPatientHomeBinding;
-import com.example.demorxgo.databinding.FragmentPatientHomeBinding;
 import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class PatientHome extends AppCompatActivity{
 
