@@ -39,6 +39,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     }
 
+    //view saved patients on users tab
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -69,6 +70,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         return mUsers.size();
     }
 
+    //display users
     public  class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView username;

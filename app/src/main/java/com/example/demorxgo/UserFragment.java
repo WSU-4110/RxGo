@@ -66,6 +66,7 @@ public class UserFragment extends Fragment {
         return view;
     }
 
+    //read patients that have been saved
     private void readUsers() {
 
         fStore = FirebaseFirestore.getInstance();
